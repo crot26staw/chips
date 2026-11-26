@@ -1,20 +1,305 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Овощные чипсы</title>
-    <link rel="stylesheet" href="./assets/vendor/lenis/lenis.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Хрустящий перекус — овощные чипсы</title>
+    <meta
+      name="description"
+      content="Овощные чипсы из картофеля, свёклы и моркови. Три ярких вкуса «Хрустящего перекуса»."
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/images/brand-dark.svg" />
+    <link rel="stylesheet" href="./assets/vendor/lenis/lenis.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
     <script defer src="./assets/vendor/gsap/gsap.min.js"></script>
     <script defer src="./assets/vendor/lenis/lenis.min.js"></script>
     <script defer src="./assets/js/main.js"></script>
   </head>
   <body>
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title" class="hero__title" data-intro>Овощные чипсы</h1>
-      </section>
-    </main>
+    <div class="site">
+      <header class="header">
+        <nav aria-label="Основная навигация">
+          <a href="#flavours">Вкусы</a>
+          <a href="#ingredients">Состав</a>
+          <a href="#production">Производство</a>
+          <a href="#shops">Где купить</a>
+        </nav>
+        <a href="#top" class="header__brand"
+          ><img src="./assets/images/brand-horizontal.svg" alt="Хрустящий перекус — на главную"
+        /></a>
+        <div class="header__actions">
+          <a href="tel:+79818435454">+7 (981) 843 54-54</a>
+          <a class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
+        </div>
+      </header>
+      <main>
+        <section class="hero" id="top" data-section aria-labelledby="hero-title">
+          <p class="hero__badge">Не жарим,<br />а сушим</p>
+          <div class="hero__content" data-intro>
+            <h1 id="hero-title">
+              <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
+            </h1>
+            <p>Полезный, как настоящие овощи, вкусный, как чипсы</p>
+          </div>
+        </section>
+        <section class="ingredients" id="ingredients" data-section aria-labelledby="ingredients-title">
+          <div class="section-heading">
+            <h2 id="ingredients-title">Три овоща&nbsp;<br />в каждой пачке. Картофель, свёкла и морковь</h2>
+            <p>Три натуральных овоща в идеальном сочетании. Никакой химии — только натуральные ингредиенты</p>
+          </div>
+          <div class="ingredients__row" aria-hidden="true">
+            <div class="ingredient">
+              <img
+                src="./assets/images/cutouts/potato-1x.webp"
+                srcset="
+                  ./assets/images/cutouts/potato-1x.webp 280w,
+                  ./assets/images/cutouts/potato-2x.webp 560w
+                "
+                sizes="17.5rem"
+                alt=""
+              />
+            </div>
+            <div class="ingredient">
+              <img
+                src="./assets/images/cutouts/beet-1x.webp"
+                srcset="./assets/images/cutouts/beet-1x.webp 280w, ./assets/images/cutouts/beet-2x.webp 560w"
+                sizes="17.5rem"
+                alt=""
+              />
+            </div>
+            <div class="ingredient ingredient--chip">
+              <img
+                src="./assets/images/cutouts/chip-1x.webp"
+                srcset="./assets/images/cutouts/chip-1x.webp 280w, ./assets/images/cutouts/chip-2x.webp 560w"
+                sizes="17.5rem"
+                alt=""
+              />
+            </div>
+            <div class="ingredient">
+              <img
+                src="./assets/images/cutouts/potato-1x.webp"
+                srcset="
+                  ./assets/images/cutouts/potato-1x.webp 280w,
+                  ./assets/images/cutouts/potato-2x.webp 560w
+                "
+                sizes="17.5rem"
+                alt=""
+              />
+            </div>
+            <div class="ingredient">
+              <img
+                src="./assets/images/cutouts/carrot-1x.webp"
+                srcset="
+                  ./assets/images/cutouts/carrot-1x.webp 280w,
+                  ./assets/images/cutouts/carrot-2x.webp 560w
+                "
+                sizes="17.5rem"
+                alt=""
+              />
+            </div>
+          </div>
+        </section>
+        <section class="balance" id="balance" data-section aria-labelledby="balance-title">
+          <div class="balance__heading">
+            <h2 id="balance-title">Сбалансированный<br />перекус</h2>
+            <p>Овощи, клетчатка и легкость. Вкусная альтернатива обычным чипсам</p>
+          </div>
+          <p class="fiber-badge"><span>Содержит</span> клетчатку</p>
+          <article class="nutrition">
+            <div class="nutrition__body">
+              <div class="nutrition__icon"><img src="./assets/images/leaf.svg" alt="" /></div>
+              <p class="nutrition__label">Основа вкуса</p>
+              <h3>Овощи и клетчатка</h3>
+              <p class="nutrition__description">Пищевые волокна поддерживают регулярное пищеварение</p>
+            </div>
+          </article>
+        </section>
+        <section class="flavours" id="flavours" data-section aria-labelledby="flavours-title">
+          <div class="section-heading">
+            <h2 id="flavours-title">Три ярких вкуса</h2>
+            <p>Знакомый вкус чипсов в новом, натуральном составе</p>
+          </div>
+          <div class="flavours__list">
+            <article class="flavour">
+              <div class="flavour__photo">
+                <img
+                  src="./assets/images/cutouts/sour-cream-1x.webp"
+                  srcset="
+                    ./assets/images/cutouts/sour-cream-1x.webp 327w,
+                    ./assets/images/cutouts/sour-cream-2x.webp 654w
+                  "
+                  sizes="20.4375rem"
+                  alt="Упаковка чипсов «Сметана + зелень»"
+                />
+              </div>
+              <h3>Сметана + зелень</h3>
+              <p>Нежный вкус сметаны с ароматными нотками зелени. Любимая классика в овощном исполнении</p>
+            </article>
+            <article class="flavour">
+              <div class="flavour__photo">
+                <img
+                  src="./assets/images/cutouts/paprika-1x.webp"
+                  srcset="
+                    ./assets/images/cutouts/paprika-1x.webp 327w,
+                    ./assets/images/cutouts/paprika-2x.webp 654w
+                  "
+                  sizes="20.4375rem"
+                  alt="Упаковка чипсов «Паприка»"
+                />
+              </div>
+              <h3>Паприка</h3>
+              <p>Насыщенный вкус паприки с пряными нотками.&nbsp;<br />Для тех, кто любит поярче</p>
+            </article>
+            <article class="flavour">
+              <div class="flavour__photo">
+                <img
+                  src="./assets/images/cutouts/classic-1x.webp"
+                  srcset="
+                    ./assets/images/cutouts/classic-1x.webp 327w,
+                    ./assets/images/cutouts/classic-2x.webp 654w
+                  "
+                  sizes="20.4375rem"
+                  alt="Упаковка чипсов «Классика»"
+                />
+              </div>
+              <h3>Классика</h3>
+              <p>Немного соли, натуральный вкус картофеля, свёклы и моркови. Ничего лишнего</p>
+            </article>
+          </div>
+        </section>
+        <section class="production" id="production" data-section aria-labelledby="production-title">
+          <picture class="production__art">
+            <source
+              media="(min-resolution: 1.5dppx), (min-width: 1600px)"
+              srcset="./assets/images/field.webp"
+            />
+            <img class="production__field" src="./assets/images/field-desktop.webp" alt="" />
+          </picture>
+          <div class="production__content">
+            <div class="production__heading">
+              <h2 id="production-title">Прямо с поля</h2>
+              <p>
+                Сначала мы отбираем картофель, свёклу и морковь,<br />очищаем их и подготавливаем к производству
+              </p>
+            </div>
+            <div class="harvest-step harvest-step--back" aria-hidden="true">
+              <div class="harvest-step__body">
+                <span class="harvest-step__photo"></span>
+                <ol>
+                  <li>Собираем с поля</li>
+                </ol>
+              </div>
+            </div>
+            <div class="harvest-step">
+              <div class="harvest-step__body">
+                <span class="harvest-step__photo"></span>
+                <ol>
+                  <li>Собираем с поля</li>
+                </ol>
+              </div>
+            </div>
+            <span class="production__progress" aria-hidden="true"></span>
+          </div>
+        </section>
+        <section class="moments" id="moments" data-section aria-labelledby="moments-title">
+          <div class="moments__intro">
+            <h2 id="moments-title"><img src="./assets/images/brand-dark.svg" alt="Хрустящий перекус" /></h2>
+            <p>
+              Знакомые вкусы и необычный овощной микс — без необходимости выбирать между удовольствием<br />и
+              понятным составом
+            </p>
+            <a class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
+          </div>
+          <div class="moments__stack">
+            <figure class="moment moment--walk">
+              <figcaption>На прогулке</figcaption>
+            </figure>
+            <figure class="moment moment--school">
+              <figcaption>В школу</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="comparison" id="comparison" data-section aria-labelledby="comparison-title">
+          <p class="fiber-badge"><span>Много</span> клетчатки</p>
+          <h2 id="comparison-title">Привычные чипсы. Натуральная основа.</h2>
+          <div class="comparison__copy">
+            <h3>Картофель</h3>
+            <p>Привычный картофель содержит пищевые волокна — естественную часть растительной пищи</p>
+          </div>
+        </section>
+        <section class="shops" id="shops" data-section aria-labelledby="shops-title">
+          <div class="section-heading">
+            <h2 id="shops-title">Где купить</h2>
+            <p>
+              Три вкуса, одна любовь к хрусту. Скоро здесь появятся прямые ссылки на реальные карточки товара.
+            </p>
+          </div>
+          <div class="shops__grid">
+            <article class="store">
+              <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+              <h3>Интернет магазин</h3>
+              <button
+                class="shop-buy"
+                type="button"
+                disabled
+                aria-label="Интернет магазин. Ссылка на товар появится позже"
+              >
+                Купить<span class="shop-buy__icon"><img src="./assets/images/cart-store.svg" alt="" /></span>
+              </button>
+            </article>
+            <div class="shops__markets">
+              <article class="market market--wb">
+                <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+                <h3><img src="./assets/images/wildberries.svg" alt="Wildberries" /></h3>
+                <button
+                  class="shop-buy"
+                  type="button"
+                  disabled
+                  aria-label="Wildberries. Ссылка на товар появится позже"
+                >
+                  Купить<span class="shop-buy__icon"><img src="./assets/images/cart-wb.svg" alt="" /></span>
+                </button>
+              </article>
+              <article class="market market--ozon">
+                <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+                <h3><img src="./assets/images/ozon.svg" alt="Ozon" /></h3>
+                <button
+                  class="shop-buy"
+                  type="button"
+                  disabled
+                  aria-label="Ozon. Ссылка на товар появится позже"
+                >
+                  Купить<span class="shop-buy__icon"><img src="./assets/images/cart-ozon.svg" alt="" /></span>
+                </button>
+              </article>
+              <article class="market market--lavka">
+                <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+                <h3><img src="./assets/images/lavka.svg" alt="Яндекс Лавка" /></h3>
+                <button
+                  class="shop-buy"
+                  type="button"
+                  disabled
+                  aria-label="Яндекс Лавка. Ссылка на товар появится позже"
+                >
+                  Купить<span class="shop-buy__icon"><img src="./assets/images/cart-lavka.svg" alt="" /></span>
+                </button>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer" id="contacts" data-section aria-label="Контакты">
+        <div class="footer__content">
+          <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
+          <a class="footer__phone" href="tel:+73433758012">+7 (343) 375-80-12</a>
+          <div class="footer__social">
+            <a href="mailto:VOZMI@GMAIL.COM">VOZMI@GMAIL.COM</a>
+            <span>Вконтакте</span>
+          </div>
+        </div>
+        <img class="footer__chip" src="./assets/images/footer-chip.webp" alt="" />
+        <img class="footer__credit" src="./assets/images/alta.svg" alt="Разработано в alta" />
+      </footer>
+    </div>
   </body>
 </html>
