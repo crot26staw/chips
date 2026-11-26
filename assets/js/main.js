@@ -10,6 +10,30 @@
   syncLayoutWidth();
   new ResizeObserver(syncLayoutWidth).observe(root);
 
+  const header = document.querySelector(".header");
+  const menuButton = header.querySelector(".header__toggle");
+  const navigation = header.querySelector("nav");
+  const closeMenu = () => menuButton.setAttribute("aria-expanded", "false");
+  menuButton.hidden = false;
+  menuButton.addEventListener("click", () => {
+    const open = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!open));
+  });
+  navigation.addEventListener("click", closeMenu);
+  header.addEventListener("focusout", (event) => {
+    if (!header.contains(event.relatedTarget)) closeMenu();
+  });
+  document.addEventListener("click", (event) => {
+    if (!header.contains(event.target)) closeMenu();
+  });
+  header.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+      menuButton.focus();
+    }
+  });
+  window.matchMedia("(max-width: 1024px)").addEventListener("change", closeMenu);
+
   const { gsap, Lenis } = window;
   if (!gsap || !Lenis) return;
 

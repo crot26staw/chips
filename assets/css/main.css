@@ -109,6 +109,9 @@ h2 {
   display: flex;
   align-items: center;
 }
+.header__toggle {
+  display: none;
+}
 .header nav {
   display: grid;
   grid-template-columns: 2.6875rem 3.0625rem 6.1875rem 4.5625rem;
@@ -364,6 +367,7 @@ h2 {
   text-align: center;
 }
 .flavour__photo {
+  display: block;
   position: relative;
   overflow: hidden;
   width: 20.4375rem;

@@ -11,6 +11,7 @@
     <link rel="icon" type="image/svg+xml" href="./assets/images/brand-dark.svg" />
     <link rel="stylesheet" href="./assets/vendor/lenis/lenis.css" />
     <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/tablet.css" media="(max-width: 1024px)" />
     <script defer src="./assets/vendor/gsap/gsap.min.js"></script>
     <script defer src="./assets/vendor/lenis/lenis.min.js"></script>
     <script defer src="./assets/js/main.js"></script>
@@ -18,7 +19,15 @@
   <body>
     <div class="site">
       <header class="header">
-        <nav aria-label="Основная навигация">
+        <button
+          class="header__toggle"
+          type="button"
+          aria-label="Меню"
+          aria-controls="site-navigation"
+          aria-expanded="false"
+          hidden
+        ></button>
+        <nav id="site-navigation" aria-label="Основная навигация">
           <a href="#flavours">Вкусы</a>
           <a href="#ingredients">Состав</a>
           <a href="#production">Производство</a>
@@ -55,7 +64,7 @@
                   ./assets/images/cutouts/potato-1x.webp 280w,
                   ./assets/images/cutouts/potato-2x.webp 560w
                 "
-                sizes="(min-width: 768px) 19.44444vw, 149.33px"
+                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -63,7 +72,7 @@
               <img
                 src="./assets/images/cutouts/beet-1x.webp"
                 srcset="./assets/images/cutouts/beet-1x.webp 280w, ./assets/images/cutouts/beet-2x.webp 560w"
-                sizes="(min-width: 768px) 19.44444vw, 149.33px"
+                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -71,7 +80,7 @@
               <img
                 src="./assets/images/cutouts/chip-1x.webp"
                 srcset="./assets/images/cutouts/chip-1x.webp 280w, ./assets/images/cutouts/chip-2x.webp 560w"
-                sizes="(min-width: 768px) 19.44444vw, 149.33px"
+                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -82,7 +91,7 @@
                   ./assets/images/cutouts/potato-1x.webp 280w,
                   ./assets/images/cutouts/potato-2x.webp 560w
                 "
-                sizes="(min-width: 768px) 19.44444vw, 149.33px"
+                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -93,7 +102,7 @@
                   ./assets/images/cutouts/carrot-1x.webp 280w,
                   ./assets/images/cutouts/carrot-2x.webp 560w
                 "
-                sizes="(min-width: 768px) 19.44444vw, 149.33px"
+                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -121,47 +130,62 @@
           </div>
           <div class="flavours__list">
             <article class="flavour">
-              <div class="flavour__photo">
+              <picture class="flavour__photo">
+                <source
+                  media="(max-width: 1024px)"
+                  srcset="./assets/images/tablet/sour-cream.webp 220w, ./assets/images/tablet/sour-cream-large.webp 440w"
+                  sizes="(max-width: 767px) 220px, 28.64583vw"
+                />
                 <img
                   src="./assets/images/cutouts/sour-cream-1x.webp"
                   srcset="
                     ./assets/images/cutouts/sour-cream-1x.webp 327w,
                     ./assets/images/cutouts/sour-cream-2x.webp 654w
                   "
-                  sizes="(min-width: 768px) 22.70833vw, 174.4px"
+                  sizes="22.70833vw"
                   alt="Упаковка чипсов «Сметана + зелень»"
                 />
-              </div>
+              </picture>
               <h3>Сметана + зелень</h3>
               <p>Нежный вкус сметаны с ароматными нотками зелени. Любимая классика в овощном исполнении</p>
             </article>
             <article class="flavour">
-              <div class="flavour__photo">
+              <picture class="flavour__photo">
+                <source
+                  media="(max-width: 1024px)"
+                  srcset="./assets/images/tablet/paprika.webp 220w, ./assets/images/tablet/paprika-large.webp 440w"
+                  sizes="(max-width: 767px) 220px, 28.64583vw"
+                />
                 <img
                   src="./assets/images/cutouts/paprika-1x.webp"
                   srcset="
                     ./assets/images/cutouts/paprika-1x.webp 327w,
                     ./assets/images/cutouts/paprika-2x.webp 654w
                   "
-                  sizes="(min-width: 768px) 22.70833vw, 174.4px"
+                  sizes="22.70833vw"
                   alt="Упаковка чипсов «Паприка»"
                 />
-              </div>
+              </picture>
               <h3>Паприка</h3>
               <p>Насыщенный вкус паприки с пряными нотками.&nbsp;<br />Для тех, кто любит поярче</p>
             </article>
             <article class="flavour">
-              <div class="flavour__photo">
+              <picture class="flavour__photo">
+                <source
+                  media="(max-width: 1024px)"
+                  srcset="./assets/images/tablet/classic.webp 220w, ./assets/images/tablet/classic-large.webp 440w"
+                  sizes="(max-width: 767px) 220px, 28.64583vw"
+                />
                 <img
                   src="./assets/images/cutouts/classic-1x.webp"
                   srcset="
                     ./assets/images/cutouts/classic-1x.webp 327w,
                     ./assets/images/cutouts/classic-2x.webp 654w
                   "
-                  sizes="(min-width: 768px) 22.70833vw, 174.4px"
+                  sizes="22.70833vw"
                   alt="Упаковка чипсов «Классика»"
                 />
-              </div>
+              </picture>
               <h3>Классика</h3>
               <p>Немного соли, натуральный вкус картофеля, свёклы и моркови. Ничего лишнего</p>
             </article>
@@ -169,6 +193,11 @@
         </section>
         <section class="production" id="production" data-section aria-labelledby="production-title">
           <picture class="production__art">
+            <source
+              media="(max-width: 1024px)"
+              srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w"
+              sizes="(max-width: 767px) 768px, 100vw"
+            />
             <source
               media="(min-resolution: 1.5dppx), (min-width: 1600px)"
               srcset="./assets/images/field.webp"
