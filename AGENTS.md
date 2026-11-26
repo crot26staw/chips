@@ -39,6 +39,8 @@ git clone https://github.com/crot26staw/vegetable-chips.git
 cd vegetable-chips
 ```
 
+Пока десктопная верстка проходит ревью, после клонирования переключитесь на неё командой `git switch feature/desktop-landing`. После слияния используйте `main`. [Pull request с версткой](https://github.com/crot26staw/vegetable-chips/pull/1)
+
 Откройте `index.html` прямо в браузере или запустите из корня проекта локальный сервер с Python 3.
 
 ```sh
