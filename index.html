@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/vendor/lenis/lenis.css" />
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="stylesheet" href="./assets/css/tablet.css" media="(max-width: 1024px)" />
+    <link rel="stylesheet" href="./assets/css/mobile.css" media="(width < 768px)" />
     <script defer src="./assets/vendor/gsap/gsap.min.js"></script>
     <script defer src="./assets/vendor/lenis/lenis.min.js"></script>
     <script defer src="./assets/js/main.js"></script>
@@ -33,9 +34,12 @@
           <a href="#production">Производство</a>
           <a href="#shops">Где купить</a>
         </nav>
-        <a href="#top" class="header__brand"
-          ><img src="./assets/images/brand-horizontal.svg" alt="Хрустящий перекус — на главную"
-        /></a>
+        <a href="#top" class="header__brand">
+          <picture>
+            <source media="(width < 768px)" srcset="./assets/images/mobile/brand-horizontal.svg" />
+            <img src="./assets/images/brand-horizontal.svg" alt="Хрустящий перекус — на главную" />
+          </picture>
+        </a>
         <div class="header__actions">
           <a href="tel:+79818435454">+7 (981) 843 54-54</a>
           <a class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
@@ -46,7 +50,10 @@
           <p class="hero__badge">Не жарим,<br />а сушим</p>
           <div class="hero__content" data-intro>
             <h1 id="hero-title">
-              <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
+              <picture>
+                <source media="(width < 768px)" srcset="./assets/images/mobile/brand-title.svg" />
+                <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
+              </picture>
             </h1>
             <p>Полезный, как настоящие овощи, вкусный, как чипсы</p>
           </div>
@@ -58,29 +65,40 @@
           </div>
           <div class="ingredients__row" aria-hidden="true">
             <div class="ingredient">
-              <img
-                src="./assets/images/cutouts/potato-1x.webp"
-                srcset="
-                  ./assets/images/cutouts/potato-1x.webp 280w,
-                  ./assets/images/cutouts/potato-2x.webp 560w
-                "
-                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
-                alt=""
-              />
+              <picture>
+                <source media="(width < 768px)" srcset="./assets/images/mobile/first-vegetable.webp" />
+                <img
+                  src="./assets/images/cutouts/potato-1x.webp"
+                  srcset="
+                    ./assets/images/cutouts/potato-1x.webp 280w,
+                    ./assets/images/cutouts/potato-2x.webp 560w
+                  "
+                  sizes="(width < 768px) 37.33333vw, (max-width: 1024px) 36.45833vw, 19.44444vw"
+                  alt=""
+                />
+              </picture>
             </div>
             <div class="ingredient">
               <img
                 src="./assets/images/cutouts/beet-1x.webp"
-                srcset="./assets/images/cutouts/beet-1x.webp 280w, ./assets/images/cutouts/beet-2x.webp 560w"
-                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
+                srcset="
+                  ./assets/images/mobile/beet.webp 140w,
+                  ./assets/images/cutouts/beet-1x.webp 280w,
+                  ./assets/images/cutouts/beet-2x.webp 560w
+                "
+                sizes="(width < 768px) 37.33333vw, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
             <div class="ingredient ingredient--chip">
               <img
                 src="./assets/images/cutouts/chip-1x.webp"
-                srcset="./assets/images/cutouts/chip-1x.webp 280w, ./assets/images/cutouts/chip-2x.webp 560w"
-                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
+                srcset="
+                  ./assets/images/mobile/chip.webp 140w,
+                  ./assets/images/cutouts/chip-1x.webp 280w,
+                  ./assets/images/cutouts/chip-2x.webp 560w
+                "
+                sizes="(width < 768px) 37.33333vw, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -88,10 +106,11 @@
               <img
                 src="./assets/images/cutouts/potato-1x.webp"
                 srcset="
+                  ./assets/images/mobile/potato.webp 140w,
                   ./assets/images/cutouts/potato-1x.webp 280w,
                   ./assets/images/cutouts/potato-2x.webp 560w
                 "
-                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
+                sizes="(width < 768px) 37.33333vw, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -102,7 +121,7 @@
                   ./assets/images/cutouts/carrot-1x.webp 280w,
                   ./assets/images/cutouts/carrot-2x.webp 560w
                 "
-                sizes="(max-width: 767px) 280px, (max-width: 1024px) 36.45833vw, 19.44444vw"
+                sizes="(width < 768px) 37.33333vw, (max-width: 1024px) 36.45833vw, 19.44444vw"
                 alt=""
               />
             </div>
@@ -132,9 +151,14 @@
             <article class="flavour">
               <picture class="flavour__photo">
                 <source
+                  media="(width < 768px)"
+                  srcset="./assets/images/mobile/sour-cream.webp 225w, ./assets/images/cutouts/sour-cream-2x.webp 654w"
+                  sizes="60vw"
+                />
+                <source
                   media="(max-width: 1024px)"
                   srcset="./assets/images/tablet/sour-cream.webp 220w, ./assets/images/tablet/sour-cream-large.webp 440w"
-                  sizes="(max-width: 767px) 220px, 28.64583vw"
+                  sizes="28.64583vw"
                 />
                 <img
                   src="./assets/images/cutouts/sour-cream-1x.webp"
@@ -152,9 +176,14 @@
             <article class="flavour">
               <picture class="flavour__photo">
                 <source
+                  media="(width < 768px)"
+                  srcset="./assets/images/mobile/paprika.webp 225w, ./assets/images/cutouts/paprika-2x.webp 654w"
+                  sizes="60vw"
+                />
+                <source
                   media="(max-width: 1024px)"
                   srcset="./assets/images/tablet/paprika.webp 220w, ./assets/images/tablet/paprika-large.webp 440w"
-                  sizes="(max-width: 767px) 220px, 28.64583vw"
+                  sizes="28.64583vw"
                 />
                 <img
                   src="./assets/images/cutouts/paprika-1x.webp"
@@ -167,14 +196,19 @@
                 />
               </picture>
               <h3>Паприка</h3>
-              <p>Насыщенный вкус паприки с пряными нотками.&nbsp;<br />Для тех, кто любит поярче</p>
+              <p>Насыщенный вкус паприки с пряными нотками.&nbsp;<br class="wide-break" /> Для тех, кто любит поярче</p>
             </article>
             <article class="flavour">
               <picture class="flavour__photo">
                 <source
+                  media="(width < 768px)"
+                  srcset="./assets/images/mobile/classic.webp 225w, ./assets/images/cutouts/classic-2x.webp 654w"
+                  sizes="60vw"
+                />
+                <source
                   media="(max-width: 1024px)"
                   srcset="./assets/images/tablet/classic.webp 220w, ./assets/images/tablet/classic-large.webp 440w"
-                  sizes="(max-width: 767px) 220px, 28.64583vw"
+                  sizes="28.64583vw"
                 />
                 <img
                   src="./assets/images/cutouts/classic-1x.webp"
@@ -194,9 +228,14 @@
         <section class="production" id="production" data-section aria-labelledby="production-title">
           <picture class="production__art">
             <source
+              media="(width < 768px)"
+              srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w"
+              sizes="100vw"
+            />
+            <source
               media="(max-width: 1024px)"
               srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w"
-              sizes="(max-width: 767px) 768px, 100vw"
+              sizes="100vw"
             />
             <source
               media="(min-resolution: 1.5dppx), (min-width: 1600px)"
@@ -208,7 +247,7 @@
             <div class="production__heading">
               <h2 id="production-title">Прямо с поля</h2>
               <p>
-                Сначала мы отбираем картофель, свёклу и морковь,<br />очищаем их и подготавливаем к производству
+                Сначала мы отбираем картофель, свёклу и морковь,<br class="wide-break" /> очищаем их и подготавливаем к производству
               </p>
             </div>
             <div class="harvest-step harvest-step--back" aria-hidden="true">
@@ -279,7 +318,12 @@
             <div class="shops__markets">
               <article class="market market--wb">
                 <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
-                <h3><img src="./assets/images/wildberries.svg" alt="Wildberries" /></h3>
+                <h3>
+                  <picture>
+                    <source media="(width < 768px)" srcset="./assets/images/mobile/wildberries.svg" />
+                    <img src="./assets/images/wildberries.svg" alt="Wildberries" />
+                  </picture>
+                </h3>
                 <button
                   class="shop-buy"
                   type="button"
@@ -291,7 +335,12 @@
               </article>
               <article class="market market--ozon">
                 <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
-                <h3><img src="./assets/images/ozon.svg" alt="Ozon" /></h3>
+                <h3>
+                  <picture>
+                    <source media="(width < 768px)" srcset="./assets/images/mobile/ozon.svg" />
+                    <img src="./assets/images/ozon.svg" alt="Ozon" />
+                  </picture>
+                </h3>
                 <button
                   class="shop-buy"
                   type="button"
@@ -319,15 +368,23 @@
       </main>
       <footer class="footer responsive-photo" id="contacts" data-section aria-label="Контакты">
         <div class="footer__content">
-          <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
+          <picture>
+            <source media="(width < 768px)" srcset="./assets/images/mobile/brand-footer.svg" />
+            <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
+          </picture>
           <a class="footer__phone" href="tel:+73433758012">+7 (343) 375-80-12</a>
           <div class="footer__social">
             <a href="mailto:VOZMI@GMAIL.COM">VOZMI@GMAIL.COM</a>
             <span>Вконтакте</span>
           </div>
         </div>
-        <img class="footer__chip" src="./assets/images/footer-chip.webp" alt="" />
-        <img class="footer__credit" src="./assets/images/alta.svg" alt="Разработано в alta" />
+        <div class="footer__slice">
+          <img class="footer__chip" src="./assets/images/footer-chip.webp" alt="" />
+        </div>
+        <picture>
+          <source media="(width < 768px)" srcset="./assets/images/mobile/alta.svg" />
+          <img class="footer__credit" src="./assets/images/alta.svg" alt="Разработано в alta" />
+        </picture>
       </footer>
     </div>
   </body>

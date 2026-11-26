@@ -30,14 +30,6 @@
   --heading: Oswald, sans-serif;
   --shade: linear-gradient(180deg, transparent 45.549%, rgb(0 0 0 / 40%) 82.69%);
 }
-@media (width < 768px) {
-  :root {
-    font-size: calc(768px * var(--rem-base) / var(--design-width));
-  }
-  .site {
-    min-width: calc(var(--design-width) * var(--design-px));
-  }
-}
 * {
   box-sizing: border-box;
 }
@@ -755,6 +747,9 @@ h2 {
   text-decoration: underline;
   text-underline-position: from-font;
   text-decoration-thickness: from-font;
+}
+.footer__slice {
+  display: contents;
 }
 .footer__chip {
   pointer-events: none;
