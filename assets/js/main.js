@@ -1,4 +1,15 @@
 (() => {
+  const root = document.documentElement;
+  // clientWidth учитывает место, которое занимает системная полоса прокрутки.
+  const syncLayoutWidth = () => {
+    const width = root.clientWidth + "px";
+    if (root.style.getPropertyValue("--layout-width") !== width) {
+      root.style.setProperty("--layout-width", width);
+    }
+  };
+  syncLayoutWidth();
+  new ResizeObserver(syncLayoutWidth).observe(root);
+
   const { gsap, Lenis } = window;
   if (!gsap || !Lenis) return;
 
@@ -11,7 +22,7 @@
 
     const intro = document.querySelector("[data-intro]");
     if (intro) {
-      gsap.from(intro, { y: 12, duration: 0.5, ease: "power2.out", clearProps: "transform" });
+      gsap.from(intro, { y: "0.75rem", duration: 0.5, ease: "power2.out", clearProps: "transform" });
     }
 
     return () => {

@@ -17,13 +17,26 @@
   font-display: swap;
 }
 :root {
-  font-size: max(10px, calc(100vw / 90));
+  --design-width: 1440;
+  --rem-base: 16;
+  --design-px: calc(1rem / var(--rem-base));
+  font-size: calc(var(--layout-width, 100vw) * var(--rem-base) / var(--design-width));
   overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   --paper: #faf5eb;
   --ink: #231f20;
   --forest: #1d433b;
   --heading: Oswald, sans-serif;
   --shade: linear-gradient(180deg, transparent 45.549%, rgb(0 0 0 / 40%) 82.69%);
+}
+@media (width < 768px) {
+  :root {
+    font-size: calc(768px * var(--rem-base) / var(--design-width));
+  }
+  .site {
+    min-width: calc(var(--design-width) * var(--design-px));
+  }
 }
 * {
   box-sizing: border-box;
@@ -59,9 +72,17 @@ img {
 }
 .site {
   position: relative;
-  width: 90rem;
+  width: 100%;
   margin-inline: auto;
   overflow: clip;
+}
+.responsive-photo {
+  --photo: image-set(var(--photo-standard) 1x, var(--photo-large) 2x);
+}
+@media (width > 1440px) {
+  .responsive-photo {
+    --photo: var(--photo-large);
+  }
 }
 h2 {
   font: 500 2.75rem/0.9 var(--heading);
@@ -135,13 +156,14 @@ h2 {
   background-color: #195b01;
 }
 .hero {
+  --photo-standard: url("../images/hero-background.webp");
+  --photo-large: url("../images/hero-background-large.webp");
   position: relative;
   height: 50rem;
   color: white;
   background:
     var(--shade),
-    image-set(url("../images/hero-background.webp") 1x, url("../images/hero-background-large.webp") 2x) center /
-      cover;
+    var(--photo) center / cover;
 }
 .hero__badge {
   position: absolute;
@@ -227,15 +249,12 @@ h2 {
 }
 
 .balance {
+  --photo-standard: url("../images/advantage-background.webp");
+  --photo-large: url("../images/advantage-background-large.webp");
   position: relative;
   height: 50rem;
   color: #fff;
-  background: #123b27
-    image-set(
-      url("../images/advantage-background.webp") 1x,
-      url("../images/advantage-background-large.webp") 2x
-    )
-    center / cover;
+  background: #123b27 var(--photo) center / cover;
 }
 .balance__heading {
   position: absolute;
@@ -521,28 +540,28 @@ h2 {
   letter-spacing: -0.12475rem;
 }
 .moment--school {
+  --photo-standard: url("../images/school.webp");
+  --photo-large: url("../images/school-large.webp");
   inset: 0 0 auto;
   height: 40.625rem;
   padding: 3.125rem 2.375rem;
   border-radius: 1.25rem;
   background-image:
     linear-gradient(transparent, rgb(0 0 0 / 20%)),
-    image-set(url("../images/school.webp") 1x, url("../images/school-large.webp") 2x);
+    var(--photo);
   font: 500 2.75rem/0.7 var(--heading);
   letter-spacing: -0.1375rem;
 }
 
 .comparison {
+  --photo-standard: url("../images/comparison-background.webp");
+  --photo-large: url("../images/comparison-background-large.webp");
   position: relative;
   height: 50rem;
   color: white;
   background:
     var(--shade),
-    image-set(
-        url("../images/comparison-background.webp") 1x,
-        url("../images/comparison-background-large.webp") 2x
-      )
-      center / cover;
+    var(--photo) center / cover;
 }
 .comparison .fiber-badge {
   left: 52.9375rem;
@@ -609,9 +628,10 @@ h2 {
   overflow: hidden;
 }
 .store {
+  --photo-standard: url("../images/store-front.webp");
+  --photo-large: url("../images/store-front-large.webp");
   background:
-    image-set(url("../images/store-front.webp") 1x, url("../images/store-front-large.webp") 2x) center / 100%
-      100% no-repeat,
+    var(--photo) center / 100% 100% no-repeat,
     url("../images/store-middle.webp") center / cover;
 }
 .store h3 {
@@ -689,6 +709,8 @@ h2 {
 }
 
 .footer {
+  --photo-standard: url("../images/footer-background.webp");
+  --photo-large: url("../images/footer-background-large.webp");
   position: relative;
   height: 50rem;
   overflow: hidden;
@@ -700,8 +722,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   background:
-    image-set(url("../images/footer-background.webp") 1x, url("../images/footer-background-large.webp") 2x)
-      center / cover,
+    var(--photo) center / cover,
     radial-gradient(ellipse 4.5rem 2.5rem, #15390c, #0a2408);
 }
 .footer__content {
