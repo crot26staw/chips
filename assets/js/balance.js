@@ -19,6 +19,8 @@
     let pending = false;
     let frame;
     let targetVideoTime = 0;
+    let lastProgress = -1;
+    let lastExitProgress = -1;
     let disposed = false;
 
     // Coalesce fast scroll updates while the browser decodes the current seek.
@@ -31,22 +33,32 @@
       if (!disposed && video.readyState >= 2) section.setAttribute('data-video-ready', '');
     }
     function onSeeked() { revealVideo(); seekVideo(); }
+    function onMetadata() { lastProgress = -1; schedule(); }
     function videoError() { section.removeAttribute('data-video-ready'); }
+    let videoObserver;
     if (video) {
       section.removeAttribute('data-video-ready');
       video.muted = true;
-      video.addEventListener('loadedmetadata', schedule);
+      video.addEventListener('loadedmetadata', onMetadata);
       video.addEventListener('loadeddata', revealVideo);
       video.addEventListener('seeked', onSeeked);
       video.addEventListener('error', videoError);
-      video.src = context.conditions.mobile ? video.dataset.srcMobile : video.dataset.srcDesktop;
-      video.load();
+      videoObserver = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        video.src = context.conditions.mobile ? video.dataset.srcMobile : video.dataset.srcDesktop;
+        video.load();
+        videoObserver.disconnect();
+      }, { rootMargin: '50% 0px' });
+      videoObserver.observe(wrapper);
     }
 
     function update() {
       pending = false;
       const progress = gsap.utils.clamp(0, 1, (window.scrollY - start) / distance);
       const exitProgress = gsap.utils.clamp(0, 1, (window.scrollY - start - distance) / exitDistance);
+      if (progress === lastProgress && exitProgress === lastExitProgress) return;
+      lastProgress = progress;
+      lastExitProgress = exitProgress;
       timeline.progress(progress);
       // The video reaches its final frame before flavours starts overlapping.
       section.style.setProperty('--balance-progress', progress);
@@ -62,6 +74,7 @@
       frame = requestAnimationFrame(update);
     }
     function measure() {
+      lastProgress = lastExitProgress = -1;
       timeline?.kill();
       gsap.set(cards, { clearProps: 'transform,opacity,visibility,zIndex' });
       distance = section.clientHeight * (stacked ? 2.4 : 1.8);
@@ -106,6 +119,7 @@
     layout.observe(document.querySelector('main'));
     return () => {
       disposed = true;
+      videoObserver?.disconnect();
       window.removeEventListener('scroll', schedule);
       cancelAnimationFrame(frame);
       geometry.disconnect();
@@ -118,7 +132,7 @@
       section.style.removeProperty('--balance-progress');
       section.style.removeProperty('--balance-shade');
       if (video) {
-        video.removeEventListener('loadedmetadata', schedule);
+        video.removeEventListener('loadedmetadata', onMetadata);
         video.removeEventListener('loadeddata', revealVideo);
         video.removeEventListener('seeked', onSeeked);
         video.removeEventListener('error', videoError);

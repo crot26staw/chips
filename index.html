@@ -9,31 +9,13 @@
       content="Овощные чипсы из картофеля, свёклы и моркови. Три ярких вкуса «Хрустящего перекуса»."
     />
     <link rel="icon" type="image/svg+xml" href="./assets/images/brand-dark.svg" />
-    <link rel="stylesheet" href="./assets/vendor/lenis/lenis.css" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="stylesheet" href="./assets/css/tablet.css" media="(max-width: 1024px)" />
-    <link rel="stylesheet" href="./assets/css/mobile.css" media="(width < 768px)" />
-    <link rel="stylesheet" href="./assets/css/interactions.css" />
-    <link rel="stylesheet" href="./assets/css/hero.css" />
-    <link rel="stylesheet" href="./assets/css/ingredients.css" />
-    <link rel="stylesheet" href="./assets/css/header.css" />
-    <link rel="stylesheet" href="./assets/css/balance.css" />
-    <link rel="stylesheet" href="./assets/css/production.css" />
-    <link rel="stylesheet" href="./assets/css/moments.css" />
-    <link rel="stylesheet" href="./assets/css/comparison.css" />
-    <link rel="stylesheet" href="./assets/css/shops.css" />
-    <link rel="stylesheet" href="./assets/css/reveal.css" />
+    <link rel="preload" href="./assets/fonts/onest.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./assets/fonts/oswald.woff2" as="font" type="font/woff2" crossorigin />
+    <script>document.documentElement.classList.add('defer-media');</script>
+    <link rel="stylesheet" href="./assets/css/site.min.css" />
     <script defer src="./assets/vendor/gsap/gsap.min.js"></script>
     <script defer src="./assets/vendor/lenis/lenis.min.js"></script>
-    <script defer src="./assets/js/ingredients-slider.js"></script>
-    <script defer src="./assets/js/main.js"></script>
-    <script defer src="./assets/js/hero.js"></script>
-    <script defer src="./assets/js/header.js"></script>
-    <script defer src="./assets/js/balance.js"></script>
-    <script defer src="./assets/js/production.js"></script>
-    <script defer src="./assets/js/moments.js"></script>
-    <script defer src="./assets/js/comparison.js"></script>
-    <script defer src="./assets/js/reveal.js"></script>
+    <script defer src="./assets/js/site.min.js" onerror="document.documentElement.classList.remove('defer-media')"></script>
   </head>
   <body>
     <div class="site">
@@ -98,7 +80,7 @@
             <div class="ingredient">
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/first-vegetable.webp" />
-                <img
+                <img loading="lazy" decoding="async" width="280" height="280"
                   src="./assets/images/cutouts/potato-1x.webp"
                   srcset="
                     ./assets/images/cutouts/potato-1x.webp 280w,
@@ -110,7 +92,7 @@
               </picture>
             </div>
             <div class="ingredient">
-              <img
+              <img loading="lazy" decoding="async" width="280" height="280"
                 src="./assets/images/cutouts/beet-1x.webp"
                 srcset="
                   ./assets/images/mobile/beet.webp 140w,
@@ -122,7 +104,7 @@
               />
             </div>
             <div class="ingredient ingredient--chip">
-              <img
+              <img loading="lazy" decoding="async" width="280" height="280"
                 src="./assets/images/cutouts/chip-1x.webp"
                 srcset="
                   ./assets/images/mobile/chip.webp 140w,
@@ -134,7 +116,7 @@
               />
             </div>
             <div class="ingredient">
-              <img
+              <img loading="lazy" decoding="async" width="280" height="280"
                 src="./assets/images/cutouts/potato-1x.webp"
                 srcset="
                   ./assets/images/mobile/potato.webp 140w,
@@ -146,7 +128,7 @@
               />
             </div>
             <div class="ingredient">
-              <img
+              <img loading="lazy" decoding="async" width="960" height="960"
                 src="./assets/images/cutouts/carrot-whole.webp"
                 alt=""
               />
@@ -166,7 +148,7 @@
           <div class="balance__cards" data-balance-cards>
           <article class="nutrition" data-balance-card>
             <div class="nutrition__body">
-              <div class="nutrition__icon"><img src="./assets/images/leaf.svg" alt="" /></div>
+              <div class="nutrition__icon"><img loading="lazy" decoding="async" width="24" height="24" src="./assets/images/leaf.svg" alt="" /></div>
               <p class="nutrition__label">Основа вкуса</p>
               <h3>Овощи и клетчатка</h3>
               <p class="nutrition__description">Пищевые волокна поддерживают регулярное пищеварение</p>
@@ -174,7 +156,7 @@
           </article>
           <article class="nutrition" data-balance-card>
             <div class="nutrition__body">
-              <div class="nutrition__icon"><img src="./assets/images/fat.svg" alt="" /></div>
+              <div class="nutrition__icon"><img loading="lazy" decoding="async" width="23" height="24" src="./assets/images/fat.svg" alt="" /></div>
               <p class="nutrition__label">В 2,5 раза меньше жира</p>
               <h3>Всего 3,9 г жира в пачке</h3>
               <p class="nutrition__description">По сравнению с обычными чипсами на порцию 30 г</p>
@@ -182,7 +164,7 @@
           </article>
           <article class="nutrition" data-balance-card>
             <div class="nutrition__body">
-              <div class="nutrition__icon"><img src="./assets/images/kcal.svg" alt="" /></div>
+              <div class="nutrition__icon"><img loading="lazy" decoding="async" width="30" height="26" src="./assets/images/kcal.svg" alt="" /></div>
               <p class="nutrition__label">132 ККАЛ</p>
               <h3>Всего 132 ккал в пачке</h3>
               <p class="nutrition__description">Хрустящий перекус с понятной калорийностью</p>
@@ -209,7 +191,7 @@
                   srcset="./assets/images/tablet/sour-cream.webp 220w, ./assets/images/tablet/sour-cream-large.webp 440w"
                   sizes="28.64583vw"
                 />
-                <img
+                <img loading="lazy" decoding="async" width="327" height="362"
                   src="./assets/images/cutouts/sour-cream-1x.webp"
                   srcset="
                     ./assets/images/cutouts/sour-cream-1x.webp 327w,
@@ -234,7 +216,7 @@
                   srcset="./assets/images/tablet/paprika.webp 220w, ./assets/images/tablet/paprika-large.webp 440w"
                   sizes="28.64583vw"
                 />
-                <img
+                <img loading="lazy" decoding="async" width="327" height="362"
                   src="./assets/images/cutouts/paprika-1x.webp"
                   srcset="
                     ./assets/images/cutouts/paprika-1x.webp 327w,
@@ -259,7 +241,7 @@
                   srcset="./assets/images/tablet/classic.webp 220w, ./assets/images/tablet/classic-large.webp 440w"
                   sizes="28.64583vw"
                 />
-                <img
+                <img loading="lazy" decoding="async" width="327" height="362"
                   src="./assets/images/cutouts/classic-1x.webp"
                   srcset="
                     ./assets/images/cutouts/classic-1x.webp 327w,
@@ -295,11 +277,11 @@
           </div>
           <div class="production__navigation" data-production-navigation hidden>
             <div class="production__deck" data-production-deck role="group" aria-label="Этапы производства">
-              <button class="production-step" type="button" data-production-target="0" aria-current="true"><img src="./assets/images/field-detail.webp" alt="" /><span>1. Собираем с поля</span></button>
-              <button class="production-step" type="button" data-production-target="1"><img src="./assets/images/slice-thinly-detail.webp" alt="" /><span>2. Тонко нарезаем</span></button>
-              <button class="production-step" type="button" data-production-target="2"><img src="./assets/images/dontfry-detail.webp" alt="" /><span>3. Не жарим — сушим</span></button>
-              <button class="production-step" type="button" data-production-target="3"><img src="./assets/images/add-flavor-detail.webp" alt="" /><span>4. Добавляем вкус</span></button>
-              <button class="production-step" type="button" data-production-target="4"><img src="./assets/images/in-pack-detail.webp" alt="" /><span>5. И всё — в пачке</span></button>
+              <button class="production-step" type="button" data-production-target="0" aria-current="true"><img loading="lazy" decoding="async" width="144" height="144" src="./assets/images/field-detail.webp" alt="" /><span>1. Собираем с поля</span></button>
+              <button class="production-step" type="button" data-production-target="1"><img loading="lazy" decoding="async" width="144" height="144" src="./assets/images/slice-thinly-detail.webp" alt="" /><span>2. Тонко нарезаем</span></button>
+              <button class="production-step" type="button" data-production-target="2"><img loading="lazy" decoding="async" width="144" height="144" src="./assets/images/dontfry-detail.webp" alt="" /><span>3. Не жарим — сушим</span></button>
+              <button class="production-step" type="button" data-production-target="3"><img loading="lazy" decoding="async" width="144" height="144" src="./assets/images/add-flavor-detail.webp" alt="" /><span>4. Добавляем вкус</span></button>
+              <button class="production-step" type="button" data-production-target="4"><img loading="lazy" decoding="async" width="144" height="144" src="./assets/images/in-pack-detail.webp" alt="" /><span>5. И всё — в пачке</span></button>
             </div>
             <div class="production__playback">
               <span class="production__timer" aria-hidden="true"><span data-production-progress></span></span>
@@ -310,9 +292,9 @@
         </div>
 
         <div class="moments-scroll" data-moments-scroll>
-        <section class="moments" id="moments" data-section data-reveal-group aria-labelledby="moments-title">
+        <section class="moments" data-lazy-background data-warm-images id="moments" data-section data-reveal-group aria-labelledby="moments-title">
           <div class="moments__intro">
-            <h2 data-reveal id="moments-title"><img src="./assets/images/brand-dark.svg" alt="Хруст всегда к месту" /></h2>
+            <h2 data-reveal id="moments-title"><img loading="lazy" decoding="async" width="252" height="136" src="./assets/images/brand-dark.svg" alt="Хруст всегда к месту" /></h2>
             <p data-reveal>
               Знакомые вкусы и необычный овощной микс — без необходимости выбирать между удовольствием<br />и
               понятным составом
@@ -333,26 +315,26 @@
         </section>
         </div>
         <div class="comparison-scroll" data-comparison-scroll>
-        <section class="comparison responsive-photo" id="comparison" data-section data-reveal-group aria-labelledby="comparison-title">
+        <section class="comparison responsive-photo" data-warm-images id="comparison" data-section data-reveal-group aria-labelledby="comparison-title">
           <p class="fiber-badge"><span>Много</span> клетчатки</p>
           <h2 data-reveal id="comparison-title">Привычные чипсы.<br />Натуральная основа.</h2>
           <div class="comparison__scenes">
           <article class="comparison-scene" data-comparison-scene>
-            <div class="comparison__visual" data-comparison-visual><img src="./assets/images/potato.webp" alt="Картофель с ломтиками и зеленью" /></div>
+            <div class="comparison__visual" data-comparison-visual><img loading="lazy" decoding="async" width="2260" height="2260" src="./assets/images/potato.webp" srcset="./assets/images/potato-800.webp 800w, ./assets/images/potato-1400.webp 1400w, ./assets/images/potato.webp 2260w" sizes="(max-width: 1024px) 100vw, min(72vw, 110svh)" alt="Картофель с ломтиками и зеленью" /></div>
             <div class="comparison__copy" data-comparison-copy>
             <h3>Картофель</h3>
             <p>Привычный картофель содержит пищевые волокна — естественную часть растительной пищи</p>
             </div>
           </article>
           <article class="comparison-scene" data-comparison-scene>
-            <div class="comparison__visual" data-comparison-visual><img src="./assets/images/beet.webp" alt="Свёкла и свекольные ломтики" /></div>
+            <div class="comparison__visual" data-comparison-visual><img loading="lazy" decoding="async" width="2260" height="2260" src="./assets/images/beet.webp" srcset="./assets/images/beet-800.webp 800w, ./assets/images/beet-1400.webp 1400w, ./assets/images/beet.webp 2260w" sizes="(max-width: 1024px) 100vw, min(72vw, 110svh)" alt="Свёкла и свекольные ломтики" /></div>
             <div class="comparison__copy" data-comparison-copy>
               <h3>Свёкла</h3>
               <p>В свёкле содержатся пищевые волокна, в том числе пектиновые вещества.</p>
             </div>
           </article>
           <article class="comparison-scene" data-comparison-scene>
-            <div class="comparison__visual" data-comparison-visual><img src="./assets/images/carrot.webp" alt="Морковь с ломтиками и ботвой" /></div>
+            <div class="comparison__visual" data-comparison-visual><img loading="lazy" decoding="async" width="2260" height="2260" src="./assets/images/carrot.webp" srcset="./assets/images/carrot-800.webp 800w, ./assets/images/carrot-1400.webp 1400w, ./assets/images/carrot.webp 2260w" sizes="(max-width: 1024px) 100vw, min(72vw, 110svh)" alt="Морковь с ломтиками и ботвой" /></div>
             <div class="comparison__copy" data-comparison-copy>
               <h3>Морковь</h3>
               <p>Морковь известна своим бета-каротином, но также содержит клетчатку, необходимую в повседневном рационе.</p>
@@ -370,8 +352,8 @@
           </div>
           <div class="shops__grid">
             <!-- WordPress: omit unconfigured shops. Remove hidden to preview all four. -->
-            <article class="store responsive-photo" data-reveal hidden>
-              <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+            <article class="store responsive-photo" data-lazy-background data-reveal hidden>
+              <span class="shop-status"><img loading="lazy" decoding="async" width="41" height="8" src="./assets/images/online-label.svg" alt="Онлайн" /></span>
               <h3>Интернет магазин</h3>
               <button
                 class="shop-buy"
@@ -379,16 +361,16 @@
                 disabled
                 aria-label="Интернет магазин. Ссылка на товар появится позже"
               >
-                Купить<span class="shop-buy__icon"><img src="./assets/images/cart-store.svg" alt="" /></span>
+                Купить<span class="shop-buy__icon"><img loading="lazy" decoding="async" width="15" height="15" src="./assets/images/cart-store.svg" alt="" /></span>
               </button>
             </article>
             <div class="shops__markets">
               <article class="market market--wb" data-reveal>
-                <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+                <span class="shop-status"><img loading="lazy" decoding="async" width="41" height="8" src="./assets/images/online-label.svg" alt="Онлайн" /></span>
                 <h3>
                   <picture>
                     <source media="(width < 768px)" srcset="./assets/images/mobile/wildberries.svg" />
-                    <img src="./assets/images/wildberries.svg" alt="Wildberries" />
+                    <img loading="lazy" decoding="async" width="240" height="38" src="./assets/images/wildberries.svg" alt="Wildberries" />
                   </picture>
                 </h3>
                 <button
@@ -397,15 +379,15 @@
                   disabled
                   aria-label="Wildberries. Ссылка на товар появится позже"
                 >
-                  Купить<span class="shop-buy__icon"><img src="./assets/images/cart-wb.svg" alt="" /></span>
+                  Купить<span class="shop-buy__icon"><img loading="lazy" decoding="async" width="15" height="15" src="./assets/images/cart-wb.svg" alt="" /></span>
                 </button>
               </article>
               <article class="market market--ozon" data-reveal>
-                <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+                <span class="shop-status"><img loading="lazy" decoding="async" width="41" height="8" src="./assets/images/online-label.svg" alt="Онлайн" /></span>
                 <h3>
                   <picture>
                     <source media="(width < 768px)" srcset="./assets/images/mobile/ozon.svg" />
-                    <img src="./assets/images/ozon.svg" alt="Ozon" />
+                    <img loading="lazy" decoding="async" width="240" height="38" src="./assets/images/ozon.svg" alt="Ozon" />
                   </picture>
                 </h3>
                 <button
@@ -414,26 +396,26 @@
                   disabled
                   aria-label="Ozon. Ссылка на товар появится позже"
                 >
-                  Купить<span class="shop-buy__icon"><img src="./assets/images/cart-ozon.svg" alt="" /></span>
+                  Купить<span class="shop-buy__icon"><img loading="lazy" decoding="async" width="15" height="15" src="./assets/images/cart-ozon.svg" alt="" /></span>
                 </button>
               </article>
               <article class="market market--lavka" data-reveal hidden>
-                <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
-                <h3><img src="./assets/images/lavka.svg" alt="Яндекс Лавка" /></h3>
+                <span class="shop-status"><img loading="lazy" decoding="async" width="41" height="8" src="./assets/images/online-label.svg" alt="Онлайн" /></span>
+                <h3><img loading="lazy" decoding="async" width="220" height="32" src="./assets/images/lavka.svg" alt="Яндекс Лавка" /></h3>
                 <button
                   class="shop-buy"
                   type="button"
                   disabled
                   aria-label="Яндекс Лавка. Ссылка на товар появится позже"
                 >
-                  Купить<span class="shop-buy__icon"><img src="./assets/images/cart-lavka.svg" alt="" /></span>
+                  Купить<span class="shop-buy__icon"><img loading="lazy" decoding="async" width="15" height="15" src="./assets/images/cart-lavka.svg" alt="" /></span>
                 </button>
               </article>
             </div>
           </div>
         </section>
       </main>
-      <footer class="footer responsive-photo" id="contacts" data-section data-reveal-group data-chips-footer aria-label="Контакты">
+      <footer class="footer responsive-photo" data-lazy-background data-warm-images id="contacts" data-section data-reveal-group data-chips-footer aria-label="Контакты">
         <div class="footer__game" aria-hidden="true">
           <canvas class="footer__canvas" data-game-canvas></canvas>
           <canvas class="footer__blade" data-game-blade></canvas>
@@ -442,7 +424,7 @@
         <div class="footer__content">
           <picture data-reveal>
             <source media="(width < 768px)" srcset="./assets/images/mobile/brand-footer.svg" />
-            <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
+            <img loading="lazy" decoding="async" width="428" height="230" class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
           </picture>
           <a class="footer__phone" href="tel:+73433758012" data-reveal>+7 (343) 375-80-12</a>
           <div class="footer__social">
@@ -451,11 +433,11 @@
           </div>
         </div>
         <div class="footer__slice">
-          <img class="footer__chip" src="./assets/images/footer-chip.webp" alt="" />
+          <img loading="lazy" decoding="async" width="2172" height="724" class="footer__chip" src="./assets/images/footer-chip.webp" alt="" />
         </div>
         <picture>
           <source media="(width < 768px)" srcset="./assets/images/mobile/alta.svg" />
-          <img class="footer__credit" src="./assets/images/alta.svg" alt="Разработано в alta" data-reveal />
+          <img loading="lazy" decoding="async" width="195" height="26" class="footer__credit" src="./assets/images/alta.svg" alt="Разработано в alta" data-reveal />
         </picture>
       </footer>
     </div>

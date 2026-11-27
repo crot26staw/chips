@@ -14,9 +14,13 @@
     let distance = 0;
     let frame;
     let pending = false;
+    let lastProgress = -1;
     function update() {
       pending = false;
-      timeline.progress(gsap.utils.clamp(0, 1, (scrollY - start) / distance));
+      const progress = gsap.utils.clamp(0, 1, (scrollY - start) / distance);
+      if (progress === lastProgress) return;
+      lastProgress = progress;
+      timeline.progress(progress);
     }
     function schedule() {
       if (pending) return;
@@ -24,6 +28,7 @@
       frame = requestAnimationFrame(update);
     }
     function measure() {
+      lastProgress = -1;
       timeline?.kill();
       start = wrapper.getBoundingClientRect().top + scrollY;
       distance = section.clientHeight * 2.6;

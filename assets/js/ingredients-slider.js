@@ -21,15 +21,24 @@
   const spacing = () => track.clientWidth * (matchMedia('(max-width: 1024px)').matches ? 0.5 : 0.25);
 
   // Decode both states before replacing the static illustration.
-  Promise.all(vegetables.flatMap(vegetable => [vegetable.raw, vegetable.chip]).map(async source => {
-    const image = new Image();
-    image.src = new URL(source, imageRoot).href;
-    await image.decode();
-  })).then(() => {
-    track.dataset.sliderReady = '';
-    reset();
-    gsap.ticker.add(tick);
-  }).catch(() => { /* Keep the original HTML illustration if an asset cannot load. */ });
+  function prepareImages() {
+    return Promise.all(vegetables.flatMap(vegetable => [vegetable.raw, vegetable.chip]).map(async source => {
+      const image = new Image();
+      image.fetchPriority = 'low';
+      image.src = new URL(source, imageRoot).href;
+      await image.decode();
+    })).then(() => {
+      track.dataset.sliderReady = '';
+      reset();
+      gsap.ticker.add(tick);
+    }).catch(() => { /* Keep the original HTML illustration if an asset cannot load. */ });
+  }
+  const preload = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    preload.disconnect();
+    prepareImages();
+  }, { rootMargin: '100% 0px' });
+  preload.observe(section);
 
   function morph(pair, x, size) {
     // Half entered: the vegetable centre has reached the fixed shape edge.

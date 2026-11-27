@@ -1,0 +1,6 @@
+/* JavaScript enables this only if the background loader is available.
+   Without scripts all backgrounds retain their ordinary CSS fallback. */
+.defer-media [data-lazy-background],
+.defer-media [data-lazy-background] .moment {
+  background-image: none !important;
+}

@@ -29,17 +29,17 @@
     if (touchY === null && performance.now() >= resizeUntil && Math.abs(delta) > 2) scrollingDown = delta > 0;
     lastScroll = position;
     const inFooter = footer && footer.getBoundingClientRect().top <= header.offsetHeight;
-    header.toggleAttribute('data-footer-hidden', mobile.matches && !open && inFooter && scrollingDown);
+    return mobile.matches && !open && inFooter && scrollingDown;
   }
 
   // Measure at the header text's actual vertical position, including restored scroll.
   function updateContrast() {
     scheduled = false;
-    updateFooterHeader();
+    const hideHeader = updateFooterHeader();
     const bounds = sections.map(section => ({ section, rect: section.getBoundingClientRect() }));
     const headerShift = header.getBoundingClientRect().top;
-    for (const target of contrastTargets) {
-      const rect = target.getBoundingClientRect();
+    const targetBounds = contrastTargets.map(target => ({ target, rect: target.getBoundingClientRect() }));
+    for (const { target, rect } of targetBounds) {
       // Use the resting header position while it slides back into the viewport.
       const y = rect.top - headerShift + rect.height / 2;
       // Later sections paint over a pinned section during an overlapping transition.
@@ -47,6 +47,7 @@
       const tone = underlying && [...underlying.classList].some(name => lightSurfaces.has(name)) ? 'dark' : 'light';
       if (target.dataset.headerTone !== tone) target.dataset.headerTone = tone;
     }
+    header.toggleAttribute('data-footer-hidden', hideHeader);
   }
   function scheduleContrast() {
     if (scheduled) return;

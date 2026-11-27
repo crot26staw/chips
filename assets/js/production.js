@@ -181,6 +181,14 @@
   function syncMotion() {
     wrapper.toggleAttribute('data-production-pinned', !reduced.matches);
     if (reduced.matches && transitioning) animation?.progress(1);
+    if (reduced.matches) slides.forEach(slide => {
+      const video = slide.querySelector('video');
+      if (!video?.hasAttribute('src')) return;
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      slide.removeAttribute('data-video-ready');
+    });
     positionCards(false);
     syncVideo();
   }
@@ -198,6 +206,11 @@
   window.addEventListener('site:menu', event => { menuOpen = event.detail.open; syncVideo(); });
   document.addEventListener('visibilitychange', syncVideo);
   new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && entry.intersectionRatio >= 0.5; syncVideo(); }, { threshold: [0, 0.5, 1] }).observe(section);
+  new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting || reduced.matches) return;
+    prepareVideo(slides[active]);
+    prepareVideo(slides[(active + 1) % slides.length]);
+  }, { rootMargin: '100% 0px' }).observe(wrapper);
   new ResizeObserver(() => positionCards(false)).observe(section);
   gsap.ticker.add(time => {
     const delta = previousTime === undefined ? 0 : Math.min(time - previousTime, 0.1);

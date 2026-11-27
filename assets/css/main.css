@@ -1,18 +1,18 @@
 @font-face {
   font-family: Onest;
-  src: url("../fonts/onest.ttf") format("truetype");
+  src: url("../fonts/onest.woff2") format("woff2");
   font-weight: 100 900;
   font-display: swap;
 }
 @font-face {
   font-family: Oswald;
-  src: url("../fonts/oswald.ttf") format("truetype");
+  src: url("../fonts/oswald.woff2") format("woff2");
   font-weight: 200 700;
   font-display: swap;
 }
 @font-face {
   font-family: "Wix Madefor Display";
-  src: url("../fonts/wixmadefordisplay.ttf") format("truetype");
+  src: url("../fonts/wixmadefordisplay.woff2") format("woff2");
   font-weight: 400 800;
   font-display: swap;
 }
@@ -61,6 +61,7 @@ button:focus-visible {
 }
 img {
   display: block;
+  height: auto;
 }
 .site {
   position: relative;
