@@ -1,0 +1,31 @@
+/* Hidden placeholders can also be omitted entirely by the WordPress template. */
+.shops [hidden] { display: none; }
+
+/* Without a store, marketplaces fill the available width. The original
+   store + marketplace column layout remains unchanged when all four return. */
+.shops__grid:not(:has(> .store:not([hidden]))),
+.shops__grid:not(:has(.market:not([hidden]))) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.shops__markets:not(:has(.market:not([hidden]))) { display: none; }
+
+.shops__grid:not(:has(> .store:not([hidden]))) .shops__markets {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+}
+
+/* The compact version follows the reference's content height and spacing. */
+.site main > .shops:not(:has(.store:not([hidden]))) {
+  min-height: 0;
+}
+
+.shops:not(:has(.store:not([hidden]))) h2 {
+  width: auto;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .shops__grid:not(:has(> .store:not([hidden]))) .shops__markets {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

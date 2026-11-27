@@ -1,0 +1,18 @@
+/* Global Staggered Fade Up settings. Distances are CSS px, independent of PxToRem. */
+:root {
+  --reveal-duration: 800ms;
+  --reveal-stagger: 100ms;
+  --reveal-distance: 24px;
+  --reveal-easing: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Only JavaScript opts elements in. Without it, all content stays visible. */
+[data-reveal-state="pending"] { opacity: 0; }
+
+@media (width < 768px) {
+  :root { --reveal-distance: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal-state="pending"] { opacity: 1; }
+}

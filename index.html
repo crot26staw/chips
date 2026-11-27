@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="./assets/css/production.css" />
     <link rel="stylesheet" href="./assets/css/moments.css" />
     <link rel="stylesheet" href="./assets/css/comparison.css" />
+    <link rel="stylesheet" href="./assets/css/shops.css" />
+    <link rel="stylesheet" href="./assets/css/reveal.css" />
     <script defer src="./assets/vendor/gsap/gsap.min.js"></script>
     <script defer src="./assets/vendor/lenis/lenis.min.js"></script>
     <script defer src="./assets/js/ingredients-slider.js"></script>
@@ -28,11 +30,12 @@
     <script defer src="./assets/js/production.js"></script>
     <script defer src="./assets/js/moments.js"></script>
     <script defer src="./assets/js/comparison.js"></script>
+    <script defer src="./assets/js/reveal.js"></script>
   </head>
   <body>
     <div class="site">
       <div class="header-backdrop" data-menu-backdrop hidden></div>
-      <header class="header">
+      <header class="header" data-reveal-group>
         <button
           class="header__toggle"
           type="button"
@@ -40,6 +43,7 @@
           aria-controls="site-navigation"
           aria-expanded="false"
           hidden
+          data-reveal
         ></button>
         <nav id="site-navigation" aria-label="Основная навигация">
           <button class="menu-close" type="button" data-menu-close aria-label="Закрыть меню">×</button>
@@ -56,20 +60,20 @@
             <a class="menu-contact" href="mailto:VOZMI@GMAIL.COM" aria-label="Написать на почту"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></svg></a>
           </div>
         </nav>
-        <a href="#top" class="header__brand">
+        <a href="#top" class="header__brand" data-reveal>
           <picture>
             <source media="(width < 768px)" srcset="./assets/images/mobile/brand-horizontal.svg" />
             <img src="./assets/images/brand-horizontal.svg" alt="Хрустящий перекус — на главную" />
           </picture>
         </a>
         <div class="header__actions">
-          <a href="tel:+79818435454">+7 (981) 843 54-54</a>
-          <a class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
+          <a data-reveal href="tel:+79818435454">+7 (981) 843 54-54</a>
+          <a data-reveal class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
         </div>
       </header>
       <main>
-        <section class="hero responsive-photo" id="top" data-section aria-labelledby="hero-title">
-          <p class="hero__badge">Не жарим,<br />а сушим</p>
+        <section class="hero responsive-photo" id="top" data-section data-reveal-group aria-labelledby="hero-title">
+          <p class="hero__badge" data-reveal>Не жарим,<br />а сушим</p>
           <div class="hero__content" data-intro>
             <h1 id="hero-title">
               <picture>
@@ -80,10 +84,10 @@
             <p>Полезный, как настоящие овощи, вкусный, как чипсы</p>
           </div>
         </section>
-        <section class="ingredients" id="ingredients" data-section aria-labelledby="ingredients-title">
+        <section class="ingredients" id="ingredients" data-section data-reveal-group aria-labelledby="ingredients-title">
           <div class="section-heading">
-            <h2 id="ingredients-title">Три овоща&nbsp;<br />в каждой пачке. Картофель, свёкла и морковь</h2>
-            <p>Три натуральных овоща в идеальном сочетании. Никакой химии — только натуральные ингредиенты</p>
+            <h2 data-reveal id="ingredients-title">Три овоща&nbsp;<br />в каждой пачке. Картофель, свёкла и морковь</h2>
+            <p data-reveal>Три натуральных овоща в идеальном сочетании. Никакой химии — только натуральные ингредиенты</p>
           </div>
           <div class="ingredients__row" data-ingredients-slider role="region" aria-roledescription="карусель" aria-label="Из овощей в чипсы" tabindex="0">
             <div class="ingredient">
@@ -151,13 +155,13 @@
           <p class="ingredients__status" data-ingredient-status aria-live="polite" aria-atomic="true"></p>
         </section>
         <div class="balance-scroll" data-balance-scroll>
-        <section class="balance responsive-photo" id="balance" data-section aria-labelledby="balance-title">
+        <section class="balance responsive-photo" id="balance" data-section data-reveal-group aria-labelledby="balance-title">
           <video class="balance__video" data-balance-video data-src-desktop="./assets/video/chips-desc.mp4" data-src-mobile="./assets/video/chips-mobile.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
           <div class="balance__heading">
-            <h2 id="balance-title">Сбалансированный<br />перекус</h2>
-            <p>Овощи, клетчатка и легкость. Вкусная альтернатива обычным чипсам</p>
+            <h2 data-reveal id="balance-title">Сбалансированный<br />перекус</h2>
+            <p data-reveal>Овощи, клетчатка и легкость. Вкусная альтернатива обычным чипсам</p>
           </div>
-          <p class="fiber-badge"><span>Содержит</span> клетчатку</p>
+          <p class="fiber-badge" data-reveal><span>Содержит</span> клетчатку</p>
           <div class="balance__cards" data-balance-cards>
           <article class="nutrition" data-balance-card>
             <div class="nutrition__body">
@@ -186,13 +190,13 @@
           </div>
         </section>
         </div>
-        <section class="flavours" id="flavours" data-section aria-labelledby="flavours-title">
+        <section class="flavours" id="flavours" data-section data-reveal-group aria-labelledby="flavours-title">
           <div class="section-heading">
-            <h2 id="flavours-title">Три ярких вкуса</h2>
-            <p>Знакомый вкус чипсов в новом, натуральном составе</p>
+            <h2 data-reveal id="flavours-title">Три ярких вкуса</h2>
+            <p data-reveal>Знакомый вкус чипсов в новом, натуральном составе</p>
           </div>
           <div class="flavours__list">
-            <article class="flavour">
+            <article class="flavour" data-reveal>
               <picture class="flavour__photo">
                 <source
                   media="(width < 768px)"
@@ -217,7 +221,7 @@
               <h3>Сметана + зелень</h3>
               <p>Нежный вкус сметаны с ароматными нотками зелени. Любимая классика в овощном исполнении</p>
             </article>
-            <article class="flavour">
+            <article class="flavour" data-reveal>
               <picture class="flavour__photo">
                 <source
                   media="(width < 768px)"
@@ -242,7 +246,7 @@
               <h3>Паприка</h3>
               <p>Насыщенный вкус паприки с пряными нотками.&nbsp;<br class="wide-break" /> Для тех, кто любит поярче</p>
             </article>
-            <article class="flavour">
+            <article class="flavour" data-reveal>
               <picture class="flavour__photo">
                 <source
                   media="(width < 768px)"
@@ -270,7 +274,7 @@
           </div>
         </section>
         <div class="production-scroll" data-production-scroll>
-        <section class="production" id="production" data-section aria-labelledby="production-title" aria-roledescription="карусель">
+        <section class="production" id="production" data-section data-reveal-group aria-labelledby="production-title" aria-roledescription="карусель">
           <div class="production__slides" data-production-slides>
             <article class="production-slide" data-production-slide data-duration="5">
               <picture>
@@ -330,14 +334,14 @@
         </div>
 
         <div class="moments-scroll" data-moments-scroll>
-        <section class="moments" id="moments" data-section aria-labelledby="moments-title">
+        <section class="moments" id="moments" data-section data-reveal-group aria-labelledby="moments-title">
           <div class="moments__intro">
-            <h2 id="moments-title"><img src="./assets/images/brand-dark.svg" alt="Хруст всегда к месту" /></h2>
-            <p>
+            <h2 data-reveal id="moments-title"><img src="./assets/images/brand-dark.svg" alt="Хруст всегда к месту" /></h2>
+            <p data-reveal>
               Знакомые вкусы и необычный овощной микс — без необходимости выбирать между удовольствием<br />и
               понятным составом
             </p>
-            <a class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
+            <a data-reveal class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
           </div>
           <div class="moments__stack" data-moments-stack>
             <figure class="moment moment--school" data-moment-card>
@@ -353,9 +357,9 @@
         </section>
         </div>
         <div class="comparison-scroll" data-comparison-scroll>
-        <section class="comparison responsive-photo" id="comparison" data-section aria-labelledby="comparison-title">
+        <section class="comparison responsive-photo" id="comparison" data-section data-reveal-group aria-labelledby="comparison-title">
           <p class="fiber-badge"><span>Много</span> клетчатки</p>
-          <h2 id="comparison-title">Привычные чипсы.<br />Натуральная основа.</h2>
+          <h2 data-reveal id="comparison-title">Привычные чипсы.<br />Натуральная основа.</h2>
           <div class="comparison__scenes">
           <article class="comparison-scene" data-comparison-scene>
             <div class="comparison__visual" data-comparison-visual><img src="./assets/images/potato.webp" alt="Картофель с ломтиками и зеленью" /></div>
@@ -381,15 +385,16 @@
           </div>
         </section>
         </div>
-        <section class="shops" id="shops" data-section aria-labelledby="shops-title">
+        <section class="shops" id="shops" data-section data-reveal-group aria-labelledby="shops-title">
           <div class="section-heading">
-            <h2 id="shops-title">Где купить</h2>
-            <p>
+            <h2 data-reveal id="shops-title">Где купить</h2>
+            <p data-reveal>
               Три вкуса, одна любовь к хрусту. Скоро здесь появятся прямые ссылки на реальные карточки товара.
             </p>
           </div>
           <div class="shops__grid">
-            <article class="store responsive-photo">
+            <!-- WordPress: omit unconfigured shops. Remove hidden to preview all four. -->
+            <article class="store responsive-photo" data-reveal hidden>
               <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
               <h3>Интернет магазин</h3>
               <button
@@ -402,7 +407,7 @@
               </button>
             </article>
             <div class="shops__markets">
-              <article class="market market--wb">
+              <article class="market market--wb" data-reveal>
                 <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
                 <h3>
                   <picture>
@@ -419,7 +424,7 @@
                   Купить<span class="shop-buy__icon"><img src="./assets/images/cart-wb.svg" alt="" /></span>
                 </button>
               </article>
-              <article class="market market--ozon">
+              <article class="market market--ozon" data-reveal>
                 <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
                 <h3>
                   <picture>
@@ -436,7 +441,7 @@
                   Купить<span class="shop-buy__icon"><img src="./assets/images/cart-ozon.svg" alt="" /></span>
                 </button>
               </article>
-              <article class="market market--lavka">
+              <article class="market market--lavka" data-reveal hidden>
                 <span class="shop-status"><img src="./assets/images/online-label.svg" alt="Онлайн" /></span>
                 <h3><img src="./assets/images/lavka.svg" alt="Яндекс Лавка" /></h3>
                 <button
@@ -452,21 +457,21 @@
           </div>
         </section>
       </main>
-      <footer class="footer responsive-photo" id="contacts" data-section data-chips-footer aria-label="Контакты">
+      <footer class="footer responsive-photo" id="contacts" data-section data-reveal-group data-chips-footer aria-label="Контакты">
         <div class="footer__game" aria-hidden="true">
           <canvas class="footer__canvas" data-game-canvas></canvas>
           <canvas class="footer__blade" data-game-blade></canvas>
           <div class="footer__nutrition" data-game-nutrition></div>
         </div>
         <div class="footer__content">
-          <picture>
+          <picture data-reveal>
             <source media="(width < 768px)" srcset="./assets/images/mobile/brand-footer.svg" />
             <img class="brand-title" src="./assets/images/brand-title.svg" alt="Хрустящий перекус" />
           </picture>
-          <a class="footer__phone" href="tel:+73433758012">+7 (343) 375-80-12</a>
+          <a class="footer__phone" href="tel:+73433758012" data-reveal>+7 (343) 375-80-12</a>
           <div class="footer__social">
-            <a href="mailto:VOZMI@GMAIL.COM">VOZMI@GMAIL.COM</a>
-            <span>Вконтакте</span>
+            <a data-reveal href="mailto:VOZMI@GMAIL.COM">VOZMI@GMAIL.COM</a>
+            <span data-reveal>Вконтакте</span>
           </div>
         </div>
         <div class="footer__slice">
@@ -474,7 +479,7 @@
         </div>
         <picture>
           <source media="(width < 768px)" srcset="./assets/images/mobile/alta.svg" />
-          <img class="footer__credit" src="./assets/images/alta.svg" alt="Разработано в alta" />
+          <img class="footer__credit" src="./assets/images/alta.svg" alt="Разработано в alta" data-reveal />
         </picture>
       </footer>
     </div>
