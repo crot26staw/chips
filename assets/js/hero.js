@@ -7,7 +7,7 @@
   let visible = hero.getBoundingClientRect().bottom > 0;
   let menuOpen = document.documentElement.classList.contains('menu-open');
 
-  // Muted inline playback; the existing responsive photo stays behind the video.
+  // Muted inline playback over the section's solid background.
   video.muted = true;
   function shouldPlay() { return visible && !document.hidden && !menuOpen && !reduced.matches; }
   function syncPlayback() {
@@ -15,7 +15,7 @@
     if (!shouldPlay()) { video.pause(); return; }
     video.play()?.catch(() => {
       // Autoplay may be denied (for example in a power-saving mode).
-      // Keep the photo visible until playback succeeds after a user gesture.
+      // Keep the solid background until playback succeeds after a user gesture.
       if (video.paused) hero.removeAttribute('data-hero-video-ready');
     });
   }

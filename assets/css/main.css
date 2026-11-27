@@ -151,14 +151,11 @@ h2 {
   background-color: #195b01;
 }
 .hero {
-  --photo-standard: url("../images/hero-background.webp");
-  --photo-large: url("../images/hero-background-large.webp");
   position: relative;
   height: 50rem;
   color: white;
-  background:
-    var(--shade),
-    var(--photo) center / cover;
+  background-color: #123b27;
+  background-image: var(--shade);
 }
 .hero__badge {
   position: absolute;
@@ -244,12 +241,10 @@ h2 {
 }
 
 .balance {
-  --photo-standard: url("../images/advantage-background.webp");
-  --photo-large: url("../images/advantage-background-large.webp");
   position: relative;
   height: 50rem;
   color: #fff;
-  background: #123b27 var(--photo) center / cover;
+  background: #123b27;
 }
 .balance__heading {
   position: absolute;
@@ -397,19 +392,6 @@ h2 {
     #aed3f2 72.432%,
     #9fcbee 99.973%
   );
-}
-.production__field {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-@media (min-resolution: 1.5dppx), (min-width: 1600px) {
-  .production__field {
-    left: -2.87905%;
-    top: 8.811868%;
-    width: 105.7581%;
-  }
 }
 .production__content {
   position: absolute;

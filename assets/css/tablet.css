@@ -61,18 +61,11 @@
   backdrop-filter: blur(0.75rem);
 }
 
-.hero {
-  --photo-standard: url("../images/tablet/hero.webp");
-  --photo-large: url("../images/tablet/hero-large.webp");
-}
 
 .ingredients h2 {
   top: -0.0625rem;
 }
 
-.balance {
-  --photo-standard: url("../images/tablet/balance.webp");
-}
 .balance__heading {
   left: calc(50% - 0.03125rem);
   width: 26.9375rem;
@@ -110,11 +103,6 @@
   height: 100%;
 }
 
-.production__field {
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
 .production__art::after {
   content: "";
   position: absolute;

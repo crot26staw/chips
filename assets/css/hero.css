@@ -21,6 +21,17 @@
 }
 .hero .hero__badge,
 .hero .hero__content { z-index: 2; }
+@media (width < 768px) {
+  .hero { overflow: hidden; }
+  .hero__video {
+    /* The 1080px source has baked-in side bars: 96px left, 98px right.
+       Fit a centered 880px picture area, inset slightly from the encoded edges. */
+    width: calc(100% * 1080 / 880);
+    inset-inline: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero[data-hero-video-ready] .hero__video { opacity: 0; }
   .hero[data-hero-video-ready]::before { display: none; }

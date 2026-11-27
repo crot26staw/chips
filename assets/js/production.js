@@ -37,11 +37,10 @@
     video.setAttribute('playsinline', '');
     video.setAttribute('disablepictureinpicture', '');
     video.setAttribute('aria-hidden', 'true');
-    const picture = slide.querySelector('picture');
     const media = document.createElement('div');
     media.className = 'production__media';
-    picture.before(media);
-    media.append(picture, video);
+    slide.prepend(media);
+    media.append(video);
     video.addEventListener('loadeddata', () => {
       if (!reduced.matches && !video.error) slide.setAttribute('data-video-ready', '');
     });
@@ -111,7 +110,7 @@
     if (index === active) { elapsed = 0; expand(false); syncVideo(); return; }
     const outgoing = slides[active];
     const incoming = slides[index];
-    const incomingMedia = incoming.querySelector('.production__media') || incoming.querySelector('.production__field');
+    const incomingMedia = incoming.querySelector('.production__media');
     const outgoingHeading = outgoing.querySelector('.production__heading');
     const incomingHeading = incoming.querySelector('.production__heading');
     const oldButton = buttons[active];

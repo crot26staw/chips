@@ -48,8 +48,6 @@
 }
 
 .hero {
-  --photo-standard: url("../images/mobile/hero.webp");
-  --photo-large: url("../images/mobile/hero-large.webp");
   height: 50.75rem;
 }
 .hero__content {
@@ -108,8 +106,6 @@ h2 {
 }
 
 .balance {
-  --photo-standard: url("../images/mobile/balance.webp");
-  --photo-large: url("../images/mobile/balance-large.webp");
   background-color: #1b4230;
 }
 .balance__heading {
