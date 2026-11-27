@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./assets/css/tablet.css" media="(max-width: 1024px)" />
     <link rel="stylesheet" href="./assets/css/mobile.css" media="(width < 768px)" />
     <link rel="stylesheet" href="./assets/css/interactions.css" />
+    <link rel="stylesheet" href="./assets/css/hero.css" />
     <link rel="stylesheet" href="./assets/css/ingredients.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/balance.css" />
@@ -26,6 +27,7 @@
     <script defer src="./assets/vendor/lenis/lenis.min.js"></script>
     <script defer src="./assets/js/ingredients-slider.js"></script>
     <script defer src="./assets/js/main.js"></script>
+    <script defer src="./assets/js/hero.js"></script>
     <script defer src="./assets/js/header.js"></script>
     <script defer src="./assets/js/balance.js"></script>
     <script defer src="./assets/js/production.js"></script>
@@ -74,6 +76,7 @@
       </header>
       <main>
         <section class="hero responsive-photo" id="top" data-section data-reveal-group aria-labelledby="hero-title">
+          <video class="hero__video" data-hero-video data-src-mobile="./assets/video/hero-mobile.mp4" data-src-desktop="./assets/video/hero-desc.mp4" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
           <p class="hero__badge" data-reveal>Не жарим,<br />а сушим</p>
           <div class="hero__content" data-intro>
             <h1 id="hero-title">
@@ -274,7 +277,7 @@
         <div class="production-scroll" data-production-scroll>
         <section class="production" id="production" data-section data-reveal-group aria-labelledby="production-title" aria-roledescription="карусель">
           <div class="production__slides" data-production-slides>
-            <article class="production-slide" data-production-slide data-duration="5">
+            <article class="production-slide" data-production-slide data-video-src="./assets/video/production-desc.mp4" data-video-src-mobile="./assets/video/production-mobile.mp4" data-duration="5">
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
                 <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
@@ -282,7 +285,7 @@
               </picture>
               <div class="production__heading"><h2 id="production-title">Прямо с поля</h2><p>Сначала мы отбираем картофель, свёклу и морковь, очищаем их и подготавливаем к производству</p></div>
             </article>
-            <article class="production-slide" data-production-slide data-duration="5" hidden>
+            <article class="production-slide" data-production-slide data-video-src="./assets/video/production-desc.mp4" data-video-src-mobile="./assets/video/production-mobile.mp4" data-duration="5" hidden>
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
                 <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
@@ -290,7 +293,7 @@
               </picture>
               <div class="production__heading"><h3>Тонко нарезаем</h3><p>Каждый овощ превращается в тонкие ломтики</p></div>
             </article>
-            <article class="production-slide" data-production-slide data-duration="5" hidden>
+            <article class="production-slide" data-production-slide data-video-src="./assets/video/production-desc.mp4" data-video-src-mobile="./assets/video/production-mobile.mp4" data-duration="5" hidden>
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
                 <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
@@ -298,7 +301,7 @@
               </picture>
               <div class="production__heading"><h3>Не жарим — сушим</h3><p>Сушим слайсы вместо жарки во фритюре</p></div>
             </article>
-            <article class="production-slide" data-production-slide data-duration="5" hidden>
+            <article class="production-slide" data-production-slide data-video-src="./assets/video/production-desc.mp4" data-video-src-mobile="./assets/video/production-mobile.mp4" data-duration="5" hidden>
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
                 <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
@@ -306,7 +309,7 @@
               </picture>
               <div class="production__heading"><h3>Добавляем вкус</h3><p>Добавляем приправу. Немного масла помогает удержать её на ломтиках</p></div>
             </article>
-            <article class="production-slide" data-production-slide data-duration="5" hidden>
+            <article class="production-slide" data-production-slide data-video-src="./assets/video/production-desc.mp4" data-video-src-mobile="./assets/video/production-mobile.mp4" data-duration="5" hidden>
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
                 <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />

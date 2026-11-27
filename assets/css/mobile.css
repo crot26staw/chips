@@ -322,8 +322,14 @@ h2 {
 .footer {
   --photo-standard: url("../images/mobile/footer.webp");
   --photo-large: url("../images/mobile/footer-large.webp");
-  height: 50rem;
-  padding-block: 3.125rem;
+  height: 100dvh;
+  min-height: 100dvh;
+  padding-block: clamp(1.5rem, 5dvh, 3.125rem);
+}
+.footer__content { flex-shrink: 0; }
+.footer > picture { flex-shrink: 0; }
+@media (max-height: 550px) {
+  .footer { height: auto; }
 }
 .footer .brand-title {
   width: 13.9468125rem;

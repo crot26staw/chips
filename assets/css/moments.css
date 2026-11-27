@@ -25,15 +25,23 @@
   aspect-ratio: 576 / 650;
   padding: 2.375rem;
   border-radius: 1.25rem;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
   font: 500 2.75rem/1 var(--heading);
   letter-spacing: -0.1rem;
 }
-.moments .moment--school { background-image: url("../images/scholl.webp"); }
-.moment--work { background-image: url("../images/work.webp"); }
-.moments .moment--walk { background-image: url("../images/walk.webp"); }
-.moment figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.moments .moment--school { background-image: url("../images/moment-school.webp"); }
+.moment--work { background-image: url("../images/moment-work.webp"); }
+.moments .moment--walk { background-image: url("../images/moment-walk.webp"); }
+.moment figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: inherit;
+  color: #fff;
+  line-height: 1.1;
+  background: linear-gradient(transparent, rgb(0 0 0 / 35%));
+}
 .moments-scroll[data-moments-animated] { height: calc(100svh + var(--moments-scroll-distance)); }
 [data-moments-animated] .moments {
   position: sticky;

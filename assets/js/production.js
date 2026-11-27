@@ -10,6 +10,7 @@
   const progress = section.querySelector('[data-production-progress]');
   const status = section.querySelector('[data-production-status]');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const mobile = matchMedia('(width < 768px)');
   let active = 0;
   let elapsed = 0;
   let previousTime;
@@ -24,20 +25,47 @@
   let videoAttempt = 0;
   let openingTouch = false;
 
-  // Optional future source: data-video-src on each slide. No empty video requests.
+  // Each stage can receive its own sources later; currently all share a placeholder.
   slides.forEach((slide, index) => {
     if (!slide.dataset.videoSrc) return;
     const video = document.createElement('video');
-    video.src = slide.dataset.videoSrc;
     video.muted = true;
     video.playsInline = true;
-    video.preload = 'metadata';
+    video.preload = 'auto';
+    video.tabIndex = -1;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('disablepictureinpicture', '');
     video.setAttribute('aria-hidden', 'true');
-    (slide.querySelector('picture') || slide.querySelector('img')).after(video);
+    const picture = slide.querySelector('picture');
+    const media = document.createElement('div');
+    media.className = 'production__media';
+    picture.before(media);
+    media.append(picture, video);
+    video.addEventListener('loadeddata', () => {
+      if (!reduced.matches && !video.error) slide.setAttribute('data-video-ready', '');
+    });
     video.addEventListener('ended', () => { if (index === active && running()) go((active + 1) % slides.length); });
-    video.addEventListener('error', () => { videoPlaying = false; video.hidden = true; });
+    video.addEventListener('error', () => {
+      video.pause();
+      if (index === active) videoPlaying = false;
+      video.dataset.failed = '';
+      slide.removeAttribute('data-video-ready');
+    });
   });
 
+  function prepareVideo(slide) {
+    const video = slide.querySelector('video');
+    if (!video || reduced.matches) return video;
+    const source = mobile.matches && slide.dataset.videoSrcMobile ? slide.dataset.videoSrcMobile : slide.dataset.videoSrc;
+    if (video.getAttribute('src') !== source) {
+      slide.removeAttribute('data-video-ready');
+      delete video.dataset.failed;
+      video.src = source;
+      video.load();
+    }
+    return video;
+  }
   function running() { return visible && !document.hidden && !reduced.matches && !menuOpen && !hovering && !focused && !transitioning && !deck.classList.contains('is-expanded'); }
   function syncVideo() {
     const attempt = ++videoAttempt;
@@ -45,7 +73,20 @@
     const video = slides[active].querySelector('video');
     if (!video) { videoPlaying = false; return; }
     if (!running()) { video.pause(); return; }
-    video.play().then(() => { if (attempt === videoAttempt) videoPlaying = true; }).catch(() => { videoPlaying = false; video.hidden = true; });
+    prepareVideo(slides[active]);
+    prepareVideo(slides[(active + 1) % slides.length]);
+    if ('failed' in video.dataset) { videoPlaying = false; return; }
+    if (video.ended) { go((active + 1) % slides.length); return; }
+    video.play().then(() => {
+      if (attempt === videoAttempt) {
+        videoPlaying = true;
+        slides[active].setAttribute('data-video-ready', '');
+      }
+    }).catch(error => {
+      if (attempt !== videoAttempt || error.name === 'AbortError') return;
+      videoPlaying = false;
+      slides[active].removeAttribute('data-video-ready');
+    });
   }
   function positionCards(animate = true) {
     const expanded = deck.classList.contains('is-expanded');
@@ -70,11 +111,12 @@
     if (index === active) { elapsed = 0; expand(false); syncVideo(); return; }
     const outgoing = slides[active];
     const incoming = slides[index];
-    const incomingMedia = incoming.querySelector('video') || incoming.querySelector('.production__field');
+    const incomingMedia = incoming.querySelector('.production__media') || incoming.querySelector('.production__field');
     const outgoingHeading = outgoing.querySelector('.production__heading');
     const incomingHeading = incoming.querySelector('.production__heading');
     const oldButton = buttons[active];
     transitioning = true;
+    ++videoAttempt;
     slides.forEach(slide => slide.querySelector('video')?.pause());
     incoming.hidden = false;
     incoming.inert = false;
@@ -86,7 +128,10 @@
     gsap.set(progress, { scaleX: 0 });
     videoPlaying = false;
     const video = incoming.querySelector('video');
-    if (video) { video.currentTime = 0; video.hidden = false; }
+    if (video) {
+      prepareVideo(incoming);
+      if (video.readyState >= 1) video.currentTime = 0;
+    }
     expand(false);
     const finish = () => {
       outgoing.hidden = true;
@@ -141,6 +186,16 @@
     syncVideo();
   }
   reduced.addEventListener('change', syncMotion);
+  mobile.addEventListener('change', () => {
+    ++videoAttempt;
+    videoPlaying = false;
+    elapsed = 0;
+    slides.forEach(slide => {
+      slide.querySelector('video')?.pause();
+      slide.removeAttribute('data-video-ready');
+    });
+    syncVideo();
+  });
   window.addEventListener('site:menu', event => { menuOpen = event.detail.open; syncVideo(); });
   document.addEventListener('visibilitychange', syncVideo);
   new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && entry.intersectionRatio >= 0.5; syncVideo(); }, { threshold: [0, 0.5, 1] }).observe(section);

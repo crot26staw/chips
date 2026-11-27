@@ -4,6 +4,12 @@
 .production-scroll .production { height: 100svh; min-height: 100svh; isolation: isolate; }
 .production__slides,
 .production-slide { position: absolute; inset: 0; }
+.production__media { position: absolute; inset: 0; }
+.production-slide video { opacity: 0; }
+.production-slide[data-video-ready] video { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .production-slide[data-video-ready] video { opacity: 0; }
+}
 .production-slide { overflow: hidden; }
 .production-slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 50%, rgb(0 20 12 / 55%)); pointer-events: none; }
 .production-slide .production__field,

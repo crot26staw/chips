@@ -16,12 +16,18 @@
   const footer = document.querySelector('[data-chips-footer]');
   let lastScroll = scrollY;
   let scrollingDown = true;
+  let touchY = null;
+  let resizeUntil = 0;
   toggle.hidden = false;
 
   function updateFooterHeader() {
-    const delta = scrollY - lastScroll;
-    if (Math.abs(delta) > 2) scrollingDown = delta > 0;
-    lastScroll = scrollY;
+    // iOS can report positions outside the scroll range during rubber-banding.
+    // Returning from that range is not a deliberate reverse scroll.
+    const maximum = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const position = Math.max(0, Math.min(maximum, scrollY));
+    const delta = position - Math.max(0, Math.min(maximum, lastScroll));
+    if (touchY === null && performance.now() >= resizeUntil && Math.abs(delta) > 2) scrollingDown = delta > 0;
+    lastScroll = position;
     const inFooter = footer && footer.getBoundingClientRect().top <= header.offsetHeight;
     header.toggleAttribute('data-footer-hidden', mobile.matches && !open && inFooter && scrollingDown);
   }
@@ -31,9 +37,11 @@
     scheduled = false;
     updateFooterHeader();
     const bounds = sections.map(section => ({ section, rect: section.getBoundingClientRect() }));
+    const headerShift = header.getBoundingClientRect().top;
     for (const target of contrastTargets) {
       const rect = target.getBoundingClientRect();
-      const y = rect.top + rect.height / 2;
+      // Use the resting header position while it slides back into the viewport.
+      const y = rect.top - headerShift + rect.height / 2;
       // Later sections paint over a pinned section during an overlapping transition.
       const underlying = bounds.findLast(item => item.rect.top <= y && item.rect.bottom > y)?.section;
       const tone = underlying && [...underlying.classList].some(name => lightSurfaces.has(name)) ? 'dark' : 'light';
@@ -46,7 +54,25 @@
     requestAnimationFrame(updateContrast);
   }
   addEventListener('scroll', scheduleContrast, { passive: true });
-  addEventListener('resize', scheduleContrast);
+  function viewportChanged() {
+    resizeUntil = performance.now() + 250;
+    scheduleContrast();
+  }
+  addEventListener('resize', viewportChanged);
+  window.visualViewport?.addEventListener('resize', viewportChanged);
+  window.visualViewport?.addEventListener('scroll', scheduleContrast);
+  addEventListener('touchstart', event => { touchY = event.touches.length === 1 ? event.touches[0].clientY : null; }, { passive: true });
+  addEventListener('touchmove', event => {
+    if (touchY === null || event.touches.length !== 1) return;
+    const nextY = event.touches[0].clientY;
+    if (Math.abs(nextY - touchY) < 6) return;
+    scrollingDown = nextY < touchY;
+    touchY = nextY;
+    scheduleContrast();
+  }, { passive: true });
+  function endTouch() { touchY = null; }
+  addEventListener('touchend', endTouch, { passive: true });
+  addEventListener('touchcancel', endTouch, { passive: true });
   new ResizeObserver(scheduleContrast).observe(document.querySelector('main'));
   updateContrast();
 
