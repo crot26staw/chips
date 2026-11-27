@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./assets/css/tablet.css" media="(max-width: 1024px)" />
     <link rel="stylesheet" href="./assets/css/mobile.css" media="(width < 768px)" />
     <link rel="stylesheet" href="./assets/css/interactions.css" />
+    <link rel="stylesheet" href="./assets/css/ingredients.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/balance.css" />
     <link rel="stylesheet" href="./assets/css/production.css" />
@@ -84,12 +85,13 @@
             <p>Полезный, как настоящие овощи, вкусный, как чипсы</p>
           </div>
         </section>
+        <div class="ingredients-scroll" data-ingredients-scroll>
         <section class="ingredients" id="ingredients" data-section data-reveal-group aria-labelledby="ingredients-title">
           <div class="section-heading">
             <h2 data-reveal id="ingredients-title">Три овоща&nbsp;<br />в каждой пачке. Картофель, свёкла и морковь</h2>
             <p data-reveal>Три натуральных овоща в идеальном сочетании. Никакой химии — только натуральные ингредиенты</p>
           </div>
-          <div class="ingredients__row" data-ingredients-slider role="region" aria-roledescription="карусель" aria-label="Из овощей в чипсы" tabindex="0">
+          <div class="ingredients__row" data-reveal data-ingredients-slider role="region" aria-roledescription="карусель" aria-label="Из овощей в чипсы" tabindex="0">
             <div class="ingredient">
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/first-vegetable.webp" />
@@ -142,18 +144,14 @@
             </div>
             <div class="ingredient">
               <img
-                src="./assets/images/cutouts/carrot-1x.webp"
-                srcset="
-                  ./assets/images/cutouts/carrot-1x.webp 280w,
-                  ./assets/images/cutouts/carrot-2x.webp 560w
-                "
-                sizes="(width < 768px) 37.33333vw, (max-width: 1024px) 36.45833vw, 19.44444vw"
+                src="./assets/images/cutouts/carrot-whole.webp"
                 alt=""
               />
             </div>
           </div>
           <p class="ingredients__status" data-ingredient-status aria-live="polite" aria-atomic="true"></p>
         </section>
+        </div>
         <div class="balance-scroll" data-balance-scroll>
         <section class="balance responsive-photo" id="balance" data-section data-reveal-group aria-labelledby="balance-title">
           <video class="balance__video" data-balance-video data-src-desktop="./assets/video/chips-desc.mp4" data-src-mobile="./assets/video/chips-mobile.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>

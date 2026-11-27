@@ -13,11 +13,23 @@
   let open = false;
   let animation;
   let scheduled = false;
+  const footer = document.querySelector('[data-chips-footer]');
+  let lastScroll = scrollY;
+  let scrollingDown = true;
   toggle.hidden = false;
+
+  function updateFooterHeader() {
+    const delta = scrollY - lastScroll;
+    if (Math.abs(delta) > 2) scrollingDown = delta > 0;
+    lastScroll = scrollY;
+    const inFooter = footer && footer.getBoundingClientRect().top <= header.offsetHeight;
+    header.toggleAttribute('data-footer-hidden', mobile.matches && !open && inFooter && scrollingDown);
+  }
 
   // Measure at the header text's actual vertical position, including restored scroll.
   function updateContrast() {
     scheduled = false;
+    updateFooterHeader();
     const bounds = sections.map(section => ({ section, rect: section.getBoundingClientRect() }));
     for (const target of contrastTargets) {
       const rect = target.getBoundingClientRect();
@@ -42,6 +54,7 @@
     next = next && adaptive.matches;
     if (next === open) return;
     open = next;
+    header.removeAttribute('data-footer-hidden');
     animation?.kill();
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
@@ -55,8 +68,9 @@
         animation = gsap.fromTo(nav, { autoAlpha: 0, y: mobile.matches ? 20 : -10 },
           { autoAlpha: 1, y: 0, duration: 0.35, ease: 'power3.out', clearProps: 'opacity,visibility,transform' });
       }
-      const first = mobile.matches ? nav.querySelector('[data-menu-close]') : nav.querySelector('.header__links a');
-      first.focus({ preventScroll: true });
+      // The mobile close control is the header toggle, above the panel.
+      if (mobile.matches) toggle.focus({ preventScroll: true });
+      else requestAnimationFrame(() => nav.querySelector('.header__links a').focus({ preventScroll: true }));
     } else {
       if (window.gsap) gsap.set(nav, { clearProps: 'opacity,visibility,transform' });
       if (restoreFocus) toggle.focus({ preventScroll: true });
@@ -80,11 +94,13 @@
     }
   });
   document.addEventListener('keydown', event => {
+    if (event.key === 'Tab') header.removeAttribute('data-footer-hidden');
     if (!open) return;
     if (event.key === 'Escape') { event.preventDefault(); setOpen(false, true); return; }
     if (event.key !== 'Tab') return;
-    const scope = mobile.matches ? nav : header;
-    const focusable = [...scope.querySelectorAll('a[href], button:not([hidden])')].filter(element => element.getClientRects().length);
+    const scope = header;
+    const controls = mobile.matches ? [toggle, ...nav.querySelectorAll('a[href], button:not([hidden])')] : [...scope.querySelectorAll('a[href], button:not([hidden])')];
+    const focusable = controls.filter(element => element.getClientRects().length);
     const first = focusable[0];
     const last = focusable.at(-1);
     if (event.shiftKey && (document.activeElement === first || !scope.contains(document.activeElement))) {
@@ -94,5 +110,5 @@
     }
   });
   adaptive.addEventListener('change', () => setOpen(false));
-  mobile.addEventListener('change', () => setOpen(false));
+  mobile.addEventListener('change', () => { setOpen(false); scheduleContrast(); });
 })();

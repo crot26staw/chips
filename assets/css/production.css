@@ -72,6 +72,9 @@
   .production-slide::after { background: none; }
 }
 @media (width < 768px) {
+  /* Follow the expanded mobile viewport when browser toolbars retract. */
+  .production-scroll .production { height: 100dvh; min-height: 100dvh; }
+  .production-scroll[data-production-pinned] { height: 175dvh; }
   .production__navigation { --step-height: 6.5rem; width: 21.4375rem; bottom: 1rem; }
   .production-step { padding: 0.75rem; font-size: 1.125rem; }
   .production-step img { width: 4.5rem; height: 4.5rem; }

@@ -4,6 +4,9 @@
   --reveal-stagger: 100ms;
   --reveal-distance: 24px;
   --reveal-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Enter the main viewing area, rather than firing at the viewport edge. */
+  --reveal-trigger: 0.75;
+  --reveal-visible-ratio: 0.25;
 }
 
 /* Only JavaScript opts elements in. Without it, all content stays visible. */

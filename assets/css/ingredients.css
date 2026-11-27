@@ -1,0 +1,46 @@
+.ingredients-scroll { position: relative; --ingredients-pin-distance: 60svh; }
+.ingredients-scroll .ingredients { min-height: 100svh; }
+.ingredients-scroll[data-ingredients-pinned] { height: calc(100svh + var(--ingredients-pin-distance)); }
+[data-ingredients-pinned] .ingredients {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  justify-content: center;
+  padding-block: min(6.25rem, 8svh);
+}
+
+.ingredients__row[data-slider-ready] {
+  --ingredient-size: min(27rem, 48svh);
+  height: var(--ingredient-size);
+  isolation: isolate;
+}
+.ingredients__lane { position: absolute; inset: 0; pointer-events: none; }
+.ingredients__lane--raw { z-index: 0; }
+.ingredients__shape {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  width: var(--ingredient-size);
+  height: var(--ingredient-size);
+  margin-left: calc(var(--ingredient-size) / -2);
+  background: url("../images/chip-shape.svg") center / 88% 93% no-repeat;
+  pointer-events: none;
+}
+.ingredients__lane--chips {
+  z-index: 2;
+  mask: url("../images/chip-shape.svg") center / calc(var(--ingredient-size) * .88) calc(var(--ingredient-size) * .93) no-repeat;
+}
+.ingredients__lane--chips .ingredient-slide__chip { opacity: 1; }
+.ingredients__row .ingredient-slide {
+  width: var(--ingredient-size);
+  height: var(--ingredient-size);
+  margin-left: calc(var(--ingredient-size) / -2);
+}
+
+@media (max-width: 1024px) {
+  .ingredients__row[data-slider-ready] { --ingredient-size: min(56.8vw, 43svh); }
+}
+@media (width < 768px) {
+  .ingredients__row[data-slider-ready] { --ingredient-size: min(56.8vw, 38svh); }
+}

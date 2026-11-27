@@ -91,6 +91,9 @@
   }
 }
 @media (width < 768px) {
+  .balance-scroll .balance { min-height: 100dvh; }
+  .balance-scroll[data-balance-animated] { height: calc(100dvh + var(--balance-scroll-distance) + var(--balance-exit-distance)); }
+  .balance-scroll[data-balance-animated] .balance { height: 100dvh; }
   .balance__heading {
     top: 4.6875rem;
     left: 50%;
