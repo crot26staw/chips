@@ -544,14 +544,10 @@ h2 {
 }
 
 .comparison {
-  --photo-standard: url("../images/comparison-background.webp");
-  --photo-large: url("../images/comparison-background-large.webp");
   position: relative;
   height: 50rem;
   color: white;
-  background:
-    var(--shade),
-    var(--photo) center / cover;
+  background: #1f2300;
 }
 .comparison .fiber-badge {
   left: 52.9375rem;
@@ -583,6 +579,11 @@ h2 {
 
 .shops {
   padding: 7.5rem;
+}
+.shops .store,
+.shops .market,
+.shops .shop-buy {
+  cursor: pointer;
 }
 .shops h2 {
   width: 10.8125rem;

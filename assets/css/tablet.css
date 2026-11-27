@@ -166,8 +166,6 @@
 
 .comparison {
   height: 64rem;
-  --photo-standard: url("../images/tablet/comparison.webp");
-  --photo-large: url("../images/tablet/comparison-large.webp");
 }
 .comparison .fiber-badge {
   left: 28.4375rem;

@@ -1,0 +1,43 @@
+.comparison-scroll { position: relative; }
+.comparison-scroll .comparison { height: auto; min-height: 100svh; background: #1f2300; isolation: isolate; }
+.comparison .comparison__scenes { display: grid; }
+.comparison .comparison-scene { position: relative; min-height: 85svh; }
+.comparison .comparison__visual { position: absolute; inset: 0; }
+.comparison__visual img { width: 100%; height: 100%; object-fit: contain; }
+.comparison .comparison__copy { z-index: 4; top: auto; bottom: 4.6875rem; left: auto; right: 3.125rem; width: min(23.6875rem, 28%); }
+.comparison .comparison__copy p { font-size: 0.9375rem; line-height: 1.3; }
+.comparison .comparison__copy h3 { transform: none; }
+.comparison h2 { z-index: 4; position: relative; inset: auto; width: auto; padding: 6rem 3.125rem 0; }
+.comparison .fiber-badge { z-index: 5; top: 18%; left: 60%; }
+.comparison-scroll[data-comparison-animated] { height: calc(100svh + var(--comparison-scroll-distance)); }
+[data-comparison-animated] .comparison { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+[data-comparison-animated] .comparison__scenes,
+[data-comparison-animated] .comparison-scene { position: absolute; inset: 0; display: block; min-height: 0; }
+[data-comparison-animated] .comparison__visual { z-index: 1; }
+[data-comparison-animated] .comparison__visual img { display: block; width: min(72vw, 110svh); height: 100%; margin-inline: auto; }
+[data-comparison-animated] .comparison h2 { position: absolute; inset: auto auto 5rem 3.3125rem; width: 25.5625rem; padding: 0; }
+@media (max-width: 1024px) {
+  .comparison .fiber-badge { top: 18%; left: 58%; }
+  [data-comparison-animated] .comparison__visual { inset: 9% 0 15%; }
+  [data-comparison-animated] .comparison__visual img { width: 100%; }
+  [data-comparison-animated] .comparison h2 { left: 4%; bottom: 7%; width: 47%; }
+  .comparison .comparison__copy { right: 4%; bottom: 7%; width: 37%; }
+}
+@media (width < 768px) {
+  .comparison { text-align: center; }
+  .comparison h2 { font-size: min(2rem, 4.4svh); line-height: 1; letter-spacing: -0.05rem; }
+  [data-comparison-animated] .comparison h2 { inset: 10% 0.75rem auto; width: auto; }
+  [data-comparison-animated] .comparison__visual { inset: 20% 0 20%; }
+  .comparison .fiber-badge {
+    top: 26%;
+    left: 54%;
+    width: min(8.8626875rem, 19svh);
+    height: min(9.375rem, 20svh);
+    font-size: min(1.25rem, 2.7svh);
+  }
+  .comparison .fiber-badge span { font-size: min(1rem, 2.2svh); }
+  .comparison .comparison__copy { inset: auto 0.75rem 9%; width: auto; }
+  .comparison .comparison__copy h3 { font: 500 min(1.5rem, 3.4svh)/1.1 var(--heading); }
+  .comparison .comparison__copy p { width: min(19rem, 90%); margin: 0.75rem auto 0; font-size: min(0.9375rem, 2svh); }
+  .comparison:not([data-comparison-playing]) .comparison__visual { bottom: 20%; }
+}

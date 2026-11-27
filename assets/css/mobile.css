@@ -246,8 +246,6 @@ h2 {
 }
 
 .comparison {
-  --photo-standard: url("../images/mobile/comparison.webp");
-  --photo-large: url("../images/mobile/comparison-large.webp");
   height: 46.875rem;
   text-align: center;
 }
