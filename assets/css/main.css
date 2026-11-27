@@ -531,20 +531,14 @@ h2 {
   height: 36.25rem;
   padding: 2rem;
   border-radius: 1.134062rem;
-  background-image: url("../images/leisure.webp");
   font: 500 2.495rem/0.7 var(--heading);
   letter-spacing: -0.12475rem;
 }
 .moment--school {
-  --photo-standard: url("../images/school.webp");
-  --photo-large: url("../images/school-large.webp");
   inset: 0 0 auto;
   height: 40.625rem;
   padding: 3.125rem 2.375rem;
   border-radius: 1.25rem;
-  background-image:
-    linear-gradient(transparent, rgb(0 0 0 / 20%)),
-    var(--photo);
   font: 500 2.75rem/0.7 var(--heading);
   letter-spacing: -0.1375rem;
 }
@@ -763,5 +757,64 @@ h2 {
 .footer__credit {
   width: 12.202438rem;
   margin-right: 0.0475rem;
-  mask: url("../images/alta-mask.svg") left center / 100% auto no-repeat;
+}
+
+.footer__game {
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+.footer[data-game-active] {
+  background: radial-gradient(circle at 48% 48%, #11543f, #00291e 125%);
+}
+.footer[data-game-active] .footer__game {
+  display: block;
+}
+.footer[data-game-active] .footer__slice {
+  display: none;
+}
+.footer[data-game-active] .footer__content,
+.footer[data-game-active] > picture {
+  position: relative;
+  pointer-events: none;
+}
+.footer[data-game-active] .footer__content {
+  text-shadow: 0 1px 5px rgb(0 34 24 / 65%);
+}
+.footer[data-game-active] .brand-title,
+.footer[data-game-active] .footer__credit {
+  filter: drop-shadow(0 1px 5px rgb(0 34 24 / 25%));
+}
+.footer__content a {
+  pointer-events: auto;
+}
+.footer__canvas,
+.footer__blade,
+.footer__nutrition {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.footer__canvas {
+  touch-action: pan-y pinch-zoom;
+  cursor: crosshair;
+}
+.footer__blade,
+.footer__nutrition {
+  pointer-events: none;
+}
+.footer__nutrition-label {
+  position: absolute;
+  font-size: clamp(15px, 1.55vw, 22px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  animation: footer-nutrition 1.25s ease-out both;
+}
+@keyframes footer-nutrition {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.88); }
+  12%, 64% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, calc(-50% - 3.5rem)); }
 }

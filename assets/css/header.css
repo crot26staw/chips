@@ -1,0 +1,137 @@
+.header {
+  position: fixed;
+  z-index: 50;
+}
+.header__links {
+  display: contents;
+}
+.header [data-header-tone="dark"] { color: var(--forest); }
+.header [data-header-tone="light"] { color: var(--paper); }
+.header__brand[data-header-tone="dark"] img { filter: brightness(0) saturate(100%); }
+.header__brand[data-header-tone="light"] img { filter: brightness(0) invert(1); }
+.header .buy-link[data-header-tone="dark"] { background-color: rgb(36 119 2 / 15%); }
+.header .buy-link[data-header-tone="light"] { background-color: rgb(250 245 235 / 15%); }
+.menu-close,
+.menu-brand,
+.menu-contacts { display: none; }
+.header-backdrop {
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+  background: rgb(0 12 7 / 72%);
+}
+html.menu-open { overflow: hidden; }
+@media (max-width: 1024px) {
+  .header nav {
+    position: fixed;
+    top: 4.75rem;
+    left: 1.25rem;
+    width: 22rem;
+    max-width: calc(100vw - 2.5rem);
+    max-height: calc(100dvh - 6rem);
+    min-height: min(28rem, calc(100dvh - 6rem));
+    padding: 6.75rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 1.25rem;
+    background: #123f2b;
+    color: var(--paper);
+    box-shadow: none;
+  }
+  .header__links {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    font: 500 2rem/1.1 var(--heading);
+    letter-spacing: -0.07rem;
+  }
+  .header .header__links a { top: auto; padding: 0; }
+  .header .menu-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .header .menu-contact {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid rgb(250 245 235 / 25%);
+    border-radius: 50%;
+    padding: 0;
+    font: 700 1.125rem/1 Onest, sans-serif;
+  }
+  .menu-contact svg { width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
+  .menu-contact:hover { background: rgb(250 245 235 / 12%); }
+  .menu-contact--unavailable { opacity: 0.65; }
+  .header__toggle[aria-expanded="true"] { color: var(--paper); }
+  .header__toggle[aria-expanded="true"]::before { transform: translateY(0.19888rem) rotate(45deg); }
+  .header__toggle[aria-expanded="true"]::after { transform: translateY(-0.19888rem) rotate(-45deg); }
+  .header[data-menu-open] .header__brand img { filter: brightness(0) invert(1); }
+  .header[data-menu-open] .header__links > a { color: var(--paper); }
+  .header[data-menu-open] .header__actions > a { color: var(--paper); }
+  .header nav a:focus-visible,
+  .header nav button:focus-visible { outline-offset: 0.25rem; }
+}
+@media (width < 768px) {
+  .header .header__toggle:not([hidden]) {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+    backdrop-filter: none;
+  }
+  .header__brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+  .header nav {
+    inset: auto 1rem 2rem;
+    width: auto;
+    max-width: none;
+    min-height: min(25.5rem, calc(100dvh - 3rem));
+    max-height: calc(100dvh - 3rem);
+    padding: 6.25rem 1.5rem 1.75rem;
+    gap: 4.5rem;
+    border-radius: 1.25rem;
+  }
+  .header .menu-brand {
+    display: block;
+    position: absolute;
+    top: 1.25rem;
+    left: 50%;
+    padding: 0;
+    transform: translateX(-50%);
+  }
+  .menu-brand img { width: 6.75rem; }
+  .header .menu-close {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: 300 1.75rem/1 Onest, sans-serif;
+    cursor: pointer;
+  }
+  .header__links { gap: 0.625rem; }
+  .header .menu-contact { width: 3.5rem; height: 3.5rem; }
+  .header[data-menu-open] > :is(.header__toggle, .header__brand, .header__actions) { opacity: 0.35; }
+  .header__toggle[aria-expanded="true"]::before { transform: translateY(0.15625rem) rotate(45deg); }
+  .header__toggle[aria-expanded="true"]::after { transform: translateY(-0.15625rem) rotate(-45deg); }
+}

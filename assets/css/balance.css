@@ -1,0 +1,116 @@
+.balance-scroll { position: relative; }
+.balance-scroll .balance {
+  height: auto;
+  min-height: 100svh;
+}
+.balance::before { display: none; }
+.balance__video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  opacity: 0;
+}
+.balance[data-video-ready] .balance__video { opacity: 1; }
+.balance .balance__heading,
+.balance .fiber-badge,
+.balance .balance__cards { z-index: 1; }
+.balance__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: max(27rem, 50svh) 3.125rem 3.125rem;
+}
+.balance .nutrition {
+  position: relative;
+  inset: auto;
+  width: auto;
+  transform: none;
+}
+.balance .nutrition__body { height: 18.5rem; }
+.balance .nutrition__description { width: auto; max-width: 19rem; }
+.balance-scroll[data-balance-animated] {
+  height: calc(100svh + var(--balance-scroll-distance) + var(--balance-exit-distance));
+  isolation: isolate;
+}
+.balance-scroll[data-balance-animated] .balance {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+[data-balance-animated] .balance::after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  background: #00140c;
+  opacity: var(--balance-shade, 0);
+  pointer-events: none;
+}
+.balance-scroll[data-balance-animated] + .flavours {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-1 * var(--balance-exit-distance));
+  background: var(--paper);
+}
+[data-balance-animated] .balance__cards {
+  position: absolute;
+  inset: auto 3.125rem 3.125rem;
+  padding: 0;
+}
+[data-balance-animated] .nutrition { will-change: transform; }
+@media (max-width: 1024px) {
+  .balance__heading {
+    top: 6.25rem;
+    left: 50%;
+    width: 27rem;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .balance__heading p { margin-inline: auto; }
+  .balance__cards {
+    grid-template-columns: minmax(0, 27.25rem);
+    justify-content: center;
+    padding: max(27rem, 50svh) 1rem 2rem;
+  }
+  [data-balance-animated] .balance__cards {
+    inset: auto 50% 3.5rem auto;
+    display: block;
+    width: 27.25rem;
+    height: 19.75rem;
+    transform: translateX(50%);
+  }
+  [data-balance-animated] .balance .nutrition {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+  }
+}
+@media (width < 768px) {
+  .balance__heading {
+    top: 4.6875rem;
+    left: 50%;
+    width: 21.4375rem;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+  .balance__heading h2 { line-height: 1; }
+  .balance__heading p { width: 19rem; }
+  .balance .fiber-badge { top: 31%; left: 55%; }
+  .balance__cards { grid-template-columns: minmax(0, 21.4375rem); }
+  [data-balance-animated] .balance__cards {
+    width: 21.4375rem;
+    bottom: 1rem;
+  }
+}
+@media (max-height: 550px) and (min-width: 768px) {
+  .balance__heading { top: 5.5rem; }
+  .balance .nutrition__body { height: 13rem; padding: 0.75rem; }
+  .balance .nutrition__icon { width: 3rem; height: 3rem; margin-bottom: 1rem; }
+  [data-balance-animated] .balance__cards { bottom: 1rem; }
+}

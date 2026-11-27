@@ -10,35 +10,35 @@
   syncLayoutWidth();
   new ResizeObserver(syncLayoutWidth).observe(root);
 
-  const header = document.querySelector(".header");
-  const menuButton = header.querySelector(".header__toggle");
-  const navigation = header.querySelector("nav");
-  const closeMenu = () => menuButton.setAttribute("aria-expanded", "false");
-  menuButton.hidden = false;
-  menuButton.addEventListener("click", () => {
-    const open = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!open));
-  });
-  navigation.addEventListener("click", closeMenu);
-  header.addEventListener("focusout", (event) => {
-    if (!header.contains(event.relatedTarget)) closeMenu();
-  });
-  document.addEventListener("click", (event) => {
-    if (!header.contains(event.target)) closeMenu();
-  });
-  header.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
-      closeMenu();
-      menuButton.focus();
+  const gameFooter = document.querySelector("[data-chips-footer]");
+  if (gameFooter && "IntersectionObserver" in window) {
+    const gameUrl = new URL("chips-ninja.js", document.currentScript.src);
+    const motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+    const preload = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || !motion.matches) return;
+      preload.disconnect();
+      motion.removeEventListener("change", observeFooter);
+      const script = document.createElement("script");
+      script.src = gameUrl.href;
+      document.head.append(script);
+    }, { rootMargin: "480px 0px" });
+
+    function observeFooter() {
+      if (motion.matches) preload.observe(gameFooter);
+      else preload.disconnect();
     }
-  });
-  window.matchMedia("(max-width: 1024px)").addEventListener("change", closeMenu);
+    observeFooter();
+    motion.addEventListener("change", observeFooter);
+  }
 
   const { gsap, Lenis } = window;
   if (!gsap || !Lenis) return;
 
   gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
     const lenis = new Lenis({ autoRaf: false, anchors: true });
+    const syncMenuScroll = event => event.detail.open ? lenis.stop() : lenis.start();
+    window.addEventListener('site:menu', syncMenuScroll);
+    if (root.classList.contains('menu-open')) lenis.stop();
     // GSAP передаёт секунды, а Lenis принимает миллисекунды.
     const updateScroll = (seconds) => lenis.raf(seconds * 1000);
     gsap.ticker.lagSmoothing(0);
@@ -51,6 +51,7 @@
 
     return () => {
       gsap.ticker.remove(updateScroll);
+      window.removeEventListener('site:menu', syncMenuScroll);
       lenis.destroy();
     };
   });

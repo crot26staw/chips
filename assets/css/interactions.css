@@ -1,0 +1,97 @@
+/* Every section occupies at least one viewport; long content remains scrollable. */
+.site main > section,
+.site > footer {
+  min-height: 100svh;
+}
+.site .hero {
+  height: 100svh;
+}
+.hero__content {
+  top: auto;
+  bottom: 3rem;
+}
+.hero .brand-title {
+  width: min(26.75rem, 46svh);
+}
+.hero__badge {
+  top: 31%;
+}
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ingredients__row[data-slider-ready] {
+  position: relative;
+  flex: none;
+  display: block;
+  height: 27rem;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ingredients__row[data-slider-ready]:active {
+  cursor: grabbing;
+}
+.ingredients__row:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: -2px;
+}
+.ingredient-slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 27rem;
+  height: 27rem;
+  margin-left: -13.5rem;
+  pointer-events: none;
+}
+.ingredient-slide__shape {
+  position: absolute;
+  inset: 0;
+  background: url("../images/chip-shape.svg") center / 88% 93% no-repeat;
+  opacity: 0;
+}
+.ingredient-slide img {
+  position: absolute;
+  inset: 0;
+  width: 65%;
+  height: 65%;
+  margin: auto;
+  object-fit: contain;
+}
+.ingredient-slide__chip {
+  opacity: 0;
+}
+.ingredients .ingredients__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 1024px) {
+  .ingredients {
+    justify-content: flex-start;
+  }
+  .ingredients__row[data-slider-ready] {
+    height: 56.8vw;
+    margin-top: 3.125rem;
+  }
+  .ingredient-slide {
+    width: 56.8vw;
+    height: 56.8vw;
+    margin-left: -28.4vw;
+  }
+}
+@media (width < 768px) {
+  .hero__content { bottom: 2rem; }
+  .hero .brand-title { width: min(21.875rem, 38svh); }
+  .hero__badge { top: 28%; }
+  .ingredients__row[data-slider-ready] {
+    margin-top: 3.625rem;
+  }
+}

@@ -237,8 +237,6 @@ h2 {
   letter-spacing: -0.0742875rem;
 }
 .moment--school {
-  --photo-standard: url("../images/mobile/school.webp");
-  --photo-large: url("../images/mobile/school-large.webp");
   top: 0.023rem;
   height: 23.75rem;
   padding: 1.5rem;
@@ -356,7 +354,6 @@ h2 {
 .footer__credit {
   width: 8.28025rem;
   margin-right: 0.03225rem;
-  mask-image: url("../images/mobile/alta-mask.svg");
 }
 
 @media (width > 375px) {

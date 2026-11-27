@@ -13,12 +13,23 @@
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="stylesheet" href="./assets/css/tablet.css" media="(max-width: 1024px)" />
     <link rel="stylesheet" href="./assets/css/mobile.css" media="(width < 768px)" />
+    <link rel="stylesheet" href="./assets/css/interactions.css" />
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/balance.css" />
+    <link rel="stylesheet" href="./assets/css/production.css" />
+    <link rel="stylesheet" href="./assets/css/moments.css" />
     <script defer src="./assets/vendor/gsap/gsap.min.js"></script>
     <script defer src="./assets/vendor/lenis/lenis.min.js"></script>
+    <script defer src="./assets/js/ingredients-slider.js"></script>
     <script defer src="./assets/js/main.js"></script>
+    <script defer src="./assets/js/header.js"></script>
+    <script defer src="./assets/js/balance.js"></script>
+    <script defer src="./assets/js/production.js"></script>
+    <script defer src="./assets/js/moments.js"></script>
   </head>
   <body>
     <div class="site">
+      <div class="header-backdrop" data-menu-backdrop hidden></div>
       <header class="header">
         <button
           class="header__toggle"
@@ -29,10 +40,19 @@
           hidden
         ></button>
         <nav id="site-navigation" aria-label="Основная навигация">
+          <button class="menu-close" type="button" data-menu-close aria-label="Закрыть меню">×</button>
+          <a class="menu-brand" href="#top"><img src="./assets/images/brand-horizontal.svg" alt="Хрустящий перекус — на главную" /></a>
+          <div class="header__links">
           <a href="#flavours">Вкусы</a>
           <a href="#ingredients">Состав</a>
           <a href="#production">Производство</a>
           <a href="#shops">Где купить</a>
+          </div>
+          <div class="menu-contacts" aria-label="Контакты">
+            <span class="menu-contact menu-contact--unavailable" aria-label="ВКонтакте — ссылка появится позже" title="Ссылка ВКонтакте появится позже">ᴠκ</span>
+            <a class="menu-contact" href="tel:+79818435454" aria-label="Позвонить"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 3 4 4-2 3a15 15 0 0 0 6 6l3-2 4 4-2 3C10 21 3 14 3 5Z"/></svg></a>
+            <a class="menu-contact" href="mailto:VOZMI@GMAIL.COM" aria-label="Написать на почту"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></svg></a>
+          </div>
         </nav>
         <a href="#top" class="header__brand">
           <picture>
@@ -63,7 +83,7 @@
             <h2 id="ingredients-title">Три овоща&nbsp;<br />в каждой пачке. Картофель, свёкла и морковь</h2>
             <p>Три натуральных овоща в идеальном сочетании. Никакой химии — только натуральные ингредиенты</p>
           </div>
-          <div class="ingredients__row" aria-hidden="true">
+          <div class="ingredients__row" data-ingredients-slider role="region" aria-roledescription="карусель" aria-label="Из овощей в чипсы" tabindex="0">
             <div class="ingredient">
               <picture>
                 <source media="(width < 768px)" srcset="./assets/images/mobile/first-vegetable.webp" />
@@ -126,14 +146,18 @@
               />
             </div>
           </div>
+          <p class="ingredients__status" data-ingredient-status aria-live="polite" aria-atomic="true"></p>
         </section>
+        <div class="balance-scroll" data-balance-scroll>
         <section class="balance responsive-photo" id="balance" data-section aria-labelledby="balance-title">
+          <video class="balance__video" data-balance-video data-src-desktop="./assets/video/chips-desc.mp4" data-src-mobile="./assets/video/chips-mobile.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
           <div class="balance__heading">
             <h2 id="balance-title">Сбалансированный<br />перекус</h2>
             <p>Овощи, клетчатка и легкость. Вкусная альтернатива обычным чипсам</p>
           </div>
           <p class="fiber-badge"><span>Содержит</span> клетчатку</p>
-          <article class="nutrition">
+          <div class="balance__cards" data-balance-cards>
+          <article class="nutrition" data-balance-card>
             <div class="nutrition__body">
               <div class="nutrition__icon"><img src="./assets/images/leaf.svg" alt="" /></div>
               <p class="nutrition__label">Основа вкуса</p>
@@ -141,7 +165,25 @@
               <p class="nutrition__description">Пищевые волокна поддерживают регулярное пищеварение</p>
             </div>
           </article>
+          <article class="nutrition" data-balance-card>
+            <div class="nutrition__body">
+              <div class="nutrition__icon"><img src="./assets/images/fat.svg" alt="" /></div>
+              <p class="nutrition__label">В 2,5 раза меньше жира</p>
+              <h3>Всего 3,9 г жира в пачке</h3>
+              <p class="nutrition__description">По сравнению с обычными чипсами на порцию 30 г</p>
+            </div>
+          </article>
+          <article class="nutrition" data-balance-card>
+            <div class="nutrition__body">
+              <div class="nutrition__icon"><img src="./assets/images/kcal.svg" alt="" /></div>
+              <p class="nutrition__label">132 ККАЛ</p>
+              <h3>Всего 132 ккал в пачке</h3>
+              <p class="nutrition__description">Хрустящий перекус с понятной калорийностью</p>
+            </div>
+          </article>
+          </div>
         </section>
+        </div>
         <section class="flavours" id="flavours" data-section aria-labelledby="flavours-title">
           <div class="section-heading">
             <h2 id="flavours-title">Три ярких вкуса</h2>
@@ -225,68 +267,89 @@
             </article>
           </div>
         </section>
-        <section class="production" id="production" data-section aria-labelledby="production-title">
-          <picture class="production__art">
-            <source
-              media="(width < 768px)"
-              srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w"
-              sizes="100vw"
-            />
-            <source
-              media="(max-width: 1024px)"
-              srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w"
-              sizes="100vw"
-            />
-            <source
-              media="(min-resolution: 1.5dppx), (min-width: 1600px)"
-              srcset="./assets/images/field.webp"
-            />
-            <img class="production__field" src="./assets/images/field-desktop.webp" alt="" />
-          </picture>
-          <div class="production__content">
-            <div class="production__heading">
-              <h2 id="production-title">Прямо с поля</h2>
-              <p>
-                Сначала мы отбираем картофель, свёклу и морковь,<br class="wide-break" /> очищаем их и подготавливаем к производству
-              </p>
-            </div>
-            <div class="harvest-step harvest-step--back" aria-hidden="true">
-              <div class="harvest-step__body">
-                <span class="harvest-step__photo"></span>
-                <ol>
-                  <li>Собираем с поля</li>
-                </ol>
-              </div>
-            </div>
-            <div class="harvest-step">
-              <div class="harvest-step__body">
-                <span class="harvest-step__photo"></span>
-                <ol>
-                  <li>Собираем с поля</li>
-                </ol>
-              </div>
-            </div>
-            <span class="production__progress" aria-hidden="true"></span>
+        <div class="production-scroll" data-production-scroll>
+        <section class="production" id="production" data-section aria-labelledby="production-title" aria-roledescription="карусель">
+          <div class="production__slides" data-production-slides>
+            <article class="production-slide" data-production-slide data-duration="5">
+              <picture>
+                <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
+                <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
+                <img class="production__field" src="./assets/images/field-desktop.webp" alt="" />
+              </picture>
+              <div class="production__heading"><h2 id="production-title">Прямо с поля</h2><p>Сначала мы отбираем картофель, свёклу и морковь, очищаем их и подготавливаем к производству</p></div>
+            </article>
+            <article class="production-slide" data-production-slide data-duration="5" hidden>
+              <picture>
+                <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
+                <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
+                <img class="production__field" src="./assets/images/field-desktop.webp" alt="" />
+              </picture>
+              <div class="production__heading"><h3>Тонко нарезаем</h3><p>Каждый овощ превращается в тонкие ломтики</p></div>
+            </article>
+            <article class="production-slide" data-production-slide data-duration="5" hidden>
+              <picture>
+                <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
+                <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
+                <img class="production__field" src="./assets/images/field-desktop.webp" alt="" />
+              </picture>
+              <div class="production__heading"><h3>Не жарим — сушим</h3><p>Сушим слайсы вместо жарки во фритюре</p></div>
+            </article>
+            <article class="production-slide" data-production-slide data-duration="5" hidden>
+              <picture>
+                <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
+                <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
+                <img class="production__field" src="./assets/images/field-desktop.webp" alt="" />
+              </picture>
+              <div class="production__heading"><h3>Добавляем вкус</h3><p>Добавляем приправу. Немного масла помогает удержать её на ломтиках</p></div>
+            </article>
+            <article class="production-slide" data-production-slide data-duration="5" hidden>
+              <picture>
+                <source media="(width < 768px)" srcset="./assets/images/mobile/field.webp 375w, ./assets/images/mobile/field-large.webp 1125w" sizes="100vw" />
+                <source media="(max-width: 1024px)" srcset="./assets/images/tablet/field.webp 768w, ./assets/images/tablet/field-large.webp 1536w" sizes="100vw" />
+                <img class="production__field" src="./assets/images/field-desktop.webp" alt="" />
+              </picture>
+              <div class="production__heading"><h3>И всё — в пачке</h3><p>Упаковываем ломтики, чтобы сохранить их хруст</p></div>
+            </article>
           </div>
+          <div class="production__navigation" data-production-navigation hidden>
+            <div class="production__deck" data-production-deck role="group" aria-label="Этапы производства">
+              <button class="production-step" type="button" data-production-target="0" aria-current="true"><img src="./assets/images/field-detail.webp" alt="" /><span>1. Собираем с поля</span></button>
+              <button class="production-step" type="button" data-production-target="1"><img src="./assets/images/slice-thinly-detail.webp" alt="" /><span>2. Тонко нарезаем</span></button>
+              <button class="production-step" type="button" data-production-target="2"><img src="./assets/images/dontfry-detail.webp" alt="" /><span>3. Не жарим — сушим</span></button>
+              <button class="production-step" type="button" data-production-target="3"><img src="./assets/images/add-flavor-detail.webp" alt="" /><span>4. Добавляем вкус</span></button>
+              <button class="production-step" type="button" data-production-target="4"><img src="./assets/images/in-pack-detail.webp" alt="" /><span>5. И всё — в пачке</span></button>
+            </div>
+            <div class="production__playback">
+              <span class="production__timer" aria-hidden="true"><span data-production-progress></span></span>
+            </div>
+          </div>
+          <p class="production__status" data-production-status aria-live="polite" aria-atomic="true"></p>
         </section>
+        </div>
+
+        <div class="moments-scroll" data-moments-scroll>
         <section class="moments" id="moments" data-section aria-labelledby="moments-title">
           <div class="moments__intro">
-            <h2 id="moments-title"><img src="./assets/images/brand-dark.svg" alt="Хрустящий перекус" /></h2>
+            <h2 id="moments-title"><img src="./assets/images/brand-dark.svg" alt="Хруст всегда к месту" /></h2>
             <p>
               Знакомые вкусы и необычный овощной микс — без необходимости выбирать между удовольствием<br />и
               понятным составом
             </p>
             <a class="buy-link" href="#shops">Купить<span class="buy-link__icon" aria-hidden="true"></span></a>
           </div>
-          <div class="moments__stack">
-            <figure class="moment moment--walk">
-              <figcaption>На прогулке</figcaption>
-            </figure>
-            <figure class="moment moment--school responsive-photo">
+          <div class="moments__stack" data-moments-stack>
+            <figure class="moment moment--school" data-moment-card>
               <figcaption>В школу</figcaption>
+            </figure>
+            <figure class="moment moment--work" data-moment-card>
+              <figcaption>На работе</figcaption>
+            </figure>
+            <figure class="moment moment--walk" data-moment-card>
+              <figcaption>На прогулке</figcaption>
             </figure>
           </div>
         </section>
+        </div>
         <section class="comparison responsive-photo" id="comparison" data-section aria-labelledby="comparison-title">
           <p class="fiber-badge"><span>Много</span> клетчатки</p>
           <h2 id="comparison-title">Привычные чипсы. Натуральная основа.</h2>
@@ -366,7 +429,12 @@
           </div>
         </section>
       </main>
-      <footer class="footer responsive-photo" id="contacts" data-section aria-label="Контакты">
+      <footer class="footer responsive-photo" id="contacts" data-section data-chips-footer aria-label="Контакты">
+        <div class="footer__game" aria-hidden="true">
+          <canvas class="footer__canvas" data-game-canvas></canvas>
+          <canvas class="footer__blade" data-game-blade></canvas>
+          <div class="footer__nutrition" data-game-nutrition></div>
+        </div>
         <div class="footer__content">
           <picture>
             <source media="(width < 768px)" srcset="./assets/images/mobile/brand-footer.svg" />
